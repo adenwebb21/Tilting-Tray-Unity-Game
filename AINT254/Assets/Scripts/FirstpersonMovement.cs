@@ -30,7 +30,7 @@ public class FirstpersonMovement : MonoBehaviour
         if (grounded)
         {
             // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, speed);
             targetVelocity = transform.TransformDirection(targetVelocity);
             targetVelocity *= speed;
 
