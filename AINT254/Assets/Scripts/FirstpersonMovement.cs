@@ -8,7 +8,8 @@ using System.Collections.Generic;
 public class FirstpersonMovement : MonoBehaviour
 {
 
-    public float speed = 10.0f;
+    public float finalSpeed = 10.0f;
+    private float speed = 0;
     public float gravity = 10.0f;
     public float maxVelocityChange = 10.0f;
     public bool canJump = true;
@@ -16,6 +17,7 @@ public class FirstpersonMovement : MonoBehaviour
     private bool grounded = false;
     private Rigidbody playerRigidbody;
 
+    private float t = 0;
 
 
     void Awake()
@@ -23,6 +25,13 @@ public class FirstpersonMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         playerRigidbody.freezeRotation = true;
         playerRigidbody.useGravity = false;
+    }
+
+    private void Update()
+    {
+        speed = Mathf.Lerp(speed, finalSpeed, t);
+
+        t += 0.2f * Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -38,7 +47,6 @@ public class FirstpersonMovement : MonoBehaviour
             Vector3 velocity = playerRigidbody.velocity;
             Vector3 velocityChange = (targetVelocity - velocity);
             velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
             playerRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
