@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public class FirstpersonMovement : MonoBehaviour
 {
 
-    public float finalSpeed = 10.0f;
+    public float finalSpeed;
     private float speed = 0;
     public float gravity = 10.0f;
     public float maxVelocityChange = 10.0f;
@@ -27,20 +27,17 @@ public class FirstpersonMovement : MonoBehaviour
         playerRigidbody.useGravity = false;
     }
 
-    private void Update()
-    {
-        speed = Mathf.Lerp(speed, finalSpeed, t);
-
-        t += 0.2f * Time.deltaTime;
-    }
-
     void FixedUpdate()
     {
         if (grounded)
         {
+            speed = Mathf.Lerp(speed, finalSpeed, t);
+            t += 0.01f * Time.deltaTime;
+
+
             // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, speed);
-            targetVelocity = transform.TransformDirection(targetVelocity);
+            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 1);
+            //targetVelocity = transform.TransformDirection(targetVelocity);
             targetVelocity *= speed;
 
             // Apply a force that attempts to reach our target velocity
