@@ -32,7 +32,7 @@ public class FirstpersonMovement : MonoBehaviour
         if (grounded)
         {
             speed = Mathf.Lerp(speed, finalSpeed, t);
-            t += 0.01f * Time.deltaTime;
+            t += 0.005f * Time.deltaTime;
 
 
             // Calculate how fast we should be moving
