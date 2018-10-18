@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
 {
-    public int score;
+    [SerializeField]
+    private int score;
 
     private string scoreString = "Score: ";
     private GUIStyle style = new GUIStyle();
 
     private void OnGUI()
     {
-        style.fontSize = 40;
-        style.normal.textColor = Color.white;
-        GUI.Label(new Rect(10, 10, 100, 100), scoreString, style);
+        GUI.Label(new Rect(10, 10, 100, 100), scoreString + score.ToString(), style);
     }
 
     void Start()
     {
+        style.fontSize = 40;
+        style.normal.textColor = Color.white;
+
         score = GameObject.FindGameObjectsWithTag("TrayItems").Length;
-        scoreString += score.ToString();
-    }
-
-    void Update()
-    {
-
     }
 
     public void ReduceScore()

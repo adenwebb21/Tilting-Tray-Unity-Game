@@ -43,7 +43,7 @@ public class FirstpersonMovement : MonoBehaviour
             // Apply a force that attempts to reach our target velocity
             Vector3 velocity = playerRigidbody.velocity;
             Vector3 velocityChange = (targetVelocity - velocity);
-            //velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
             playerRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 

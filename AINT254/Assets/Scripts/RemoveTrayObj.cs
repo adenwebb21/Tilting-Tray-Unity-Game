@@ -5,17 +5,19 @@ using UnityEngine;
 public class RemoveTrayObj : MonoBehaviour
 {
     private Transform itemTransform;
-    public GameObject scoreManager;
+    private GameObject scoreKeeper;
 
     void Start()
     {
+        scoreKeeper = GameObject.FindGameObjectWithTag("ScoreKeeper");
         itemTransform = transform;
     }
 
     private void Update()
     {
-        if(itemTransform.position.y <= 0.1)
+        if(itemTransform.position.y <= 0.2)
         {
+            scoreKeeper.GetComponent<ScoreKeeper>().ReduceScore();
             gameObject.SetActive(false);
         }
     }
