@@ -11,7 +11,7 @@ public class FirstpersonMovement : MonoBehaviour
     public float finalSpeed;
     private float speed = 0;
     public float gravity = 10.0f;
-    public float maxVelocityChange = 10.0f;
+    //public float maxVelocityChange = 10.0f;
     public bool canJump = true;
     public float jumpHeight = 2.0f;
     private bool grounded = false;
@@ -31,27 +31,29 @@ public class FirstpersonMovement : MonoBehaviour
     {
         if (grounded)
         {
-            speed = Mathf.Lerp(speed, finalSpeed, t);
-            t += 0.005f * Time.deltaTime;
+            //speed = Mathf.Lerp(speed, finalSpeed, t);
+            //t += 0.005f * Time.deltaTime;
 
 
             // Calculate how fast we should be moving
             Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 1);
             //targetVelocity = transform.TransformDirection(targetVelocity);
-            targetVelocity *= speed;
+            //targetVelocity.z *= speed;
+            //targetVelocity.x *= speed / 2;
 
             // Apply a force that attempts to reach our target velocity
-            Vector3 velocity = playerRigidbody.velocity;
-            Vector3 velocityChange = (targetVelocity - velocity);
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
-            playerRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+            //Vector3 velocity = playerRigidbody.velocity;
+            //Vector3 velocityChange = (targetVelocity - velocity);
+            //velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+            //velocityChange.y = 0;
+            //playerRigidbody.AddForce(velocity, ForceMode.VelocityChange);
+            //playerRigidbody.AddForce(targetVelocity);
 
             // Jump
-            if (canJump && Input.GetButton("Jump"))
-            {
-                playerRigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
-            }
+            //if (canJump && Input.GetButton("Jump"))
+            //{
+            //    playerRigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+            //}
         }
 
         // We apply gravity manually for more tuning control
