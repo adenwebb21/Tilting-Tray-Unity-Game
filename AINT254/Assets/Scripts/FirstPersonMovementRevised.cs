@@ -23,9 +23,17 @@ public class FirstPersonMovementRevised : MonoBehaviour {
     {
         inputs = new Vector3(Input.GetAxis("Horizontal"), 0, 1);
 
-        forwardSpeed = Mathf.Lerp(0, 1, t);
-        t += 0.01f * Time.deltaTime;
+        //forwardSpeed = Mathf.Lerp(0, 1, t);
+        //t += 0.01f * Time.deltaTime;
 
-        playerPos.position += new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed);
+        //playerPos.position += new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed);
     }
+
+    private void FixedUpdate()
+    {
+        playerBody.AddForce(new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed));
+
+    }
+
+
 }
