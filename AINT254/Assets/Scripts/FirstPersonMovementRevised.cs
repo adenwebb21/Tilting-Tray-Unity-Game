@@ -7,10 +7,10 @@ public class FirstPersonMovementRevised : MonoBehaviour {
     public float forwardSpeed, strafeSpeed;
 
     private Rigidbody playerBody;
-    private Vector3 inputs;
+    public Vector3 inputs;
     private Transform playerPos;
 
-    private float t = 0;
+    public float t = 0;
 
     private void Start()
     {
@@ -23,17 +23,16 @@ public class FirstPersonMovementRevised : MonoBehaviour {
     {
         inputs = new Vector3(Input.GetAxis("Horizontal"), 0, 1);
 
-        //forwardSpeed = Mathf.Lerp(0, 1, t);
-        //t += 0.01f * Time.deltaTime;
+        inputs.z = Mathf.Lerp(0, 1, t);
+        t += 0.1f * Time.deltaTime;
 
+        
         //playerPos.position += new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed);
+        //playerBody.velocity = new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed);
     }
 
     private void FixedUpdate()
     {
         playerBody.AddForce(new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed));
-
     }
-
-
 }

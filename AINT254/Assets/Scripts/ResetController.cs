@@ -14,6 +14,8 @@ public class ResetController : MonoBehaviour {
     public void ResetPlayer()
     {
         transform.position = startLocation;
+        GetComponent<FirstPersonMovementRevised>().inputs.z = 0;
+        GetComponent<FirstPersonMovementRevised>().t = 0;
     }
 
 }

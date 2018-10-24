@@ -30,4 +30,9 @@ public class ScoreKeeper : MonoBehaviour
             score--;
         }
     }
+
+    public void SetScore(int newScore)
+    {
+        score = newScore;
+    }
 }
