@@ -9,6 +9,9 @@ public class FirstPersonMovementRevised : MonoBehaviour {
     private Rigidbody playerBody;
     public Vector3 inputs;
     private Transform playerPos;
+    private RaycastHit hit;
+
+    private Vector3 castPos;
 
     public float t = 0;
 
@@ -26,9 +29,12 @@ public class FirstPersonMovementRevised : MonoBehaviour {
         inputs.z = Mathf.Lerp(0, 1, t);
         t += 0.1f * Time.deltaTime;
 
-        
-        //playerPos.position += new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed);
-        //playerBody.velocity = new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed);
+        castPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
+
+        if (Physics.Raycast(castPos, -transform.up, out hit))
+        {
+            transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+        }
     }
 
     private void FixedUpdate()
