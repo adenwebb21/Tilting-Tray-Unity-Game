@@ -39,6 +39,6 @@ public class FirstPersonMovementRevised : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        playerBody.AddForce(new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed));
+        playerBody.AddForce(new Vector3(inputs.x * strafeSpeed, 0, inputs.z * forwardSpeed));    
     }
 }

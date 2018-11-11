@@ -10,19 +10,13 @@ public class FirstPersonTrayControls : MonoBehaviour
     float forwardRotation = 0;
     float sidewaysRotation = 0;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         forwardRotation = verticalSpeed * Input.GetAxis("Mouse X");
         sidewaysRotation = horizontalSpeed * Input.GetAxis("Mouse Y");
 
 
-        transform.Rotate(sidewaysRotation, 0, (-1 * forwardRotation));
+        transform.Rotate(sidewaysRotation, 0, (-1 * forwardRotation));       
     }
+
 }
