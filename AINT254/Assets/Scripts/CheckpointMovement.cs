@@ -16,7 +16,7 @@ public class CheckpointMovement : MonoBehaviour
 
     private Rigidbody playerBody;
     private Transform playerPos;
-    private float rotationSpeed = 5f;
+    private float rotationSpeed = 2f;
 
     void Start()
     {
@@ -57,6 +57,6 @@ public class CheckpointMovement : MonoBehaviour
             currentCheckpointTarget++;
         }
 
-        targetPosition = checkpoints[currentCheckpointTarget].transform.position;   
+        targetPosition = checkpoints[currentCheckpointTarget].transform.position;
     }
 }
