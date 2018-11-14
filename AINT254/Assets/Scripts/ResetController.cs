@@ -17,8 +17,8 @@ public class ResetController : MonoBehaviour {
     public void ResetPlayer()
     {
         transform.position = startLocation;
-        GetComponent<FirstPersonMovementRevised>().inputs.z = 0;
-        GetComponent<FirstPersonMovementRevised>().t = 0;
+        GetComponent<CheckpointMovement>().playerSpeed = 0;
+        GetComponent<CheckpointMovement>().t = 0;
 
         trayTransform.rotation = new Quaternion(0f, 0f, 0f, 0f);
     }

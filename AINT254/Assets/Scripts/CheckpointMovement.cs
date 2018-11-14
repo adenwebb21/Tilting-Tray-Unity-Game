@@ -6,6 +6,7 @@ public class CheckpointMovement : MonoBehaviour
 {
 
     public float playerSpeed;
+    public float maxPlayerSpeed;
     public GameObject[] checkpoints;
     public float waypointThreshold;
 
@@ -17,6 +18,7 @@ public class CheckpointMovement : MonoBehaviour
     private Rigidbody playerBody;
     private Transform playerPos;
     private float rotationSpeed = 2f;
+    public float t = 0;
 
     void Start()
     {
@@ -35,6 +37,9 @@ public class CheckpointMovement : MonoBehaviour
         {
             NextCheckpoint();
         }
+
+        playerSpeed = Mathf.Lerp(0, maxPlayerSpeed, t);
+        t += 0.1f * Time.deltaTime;
 
         playerRotation = Quaternion.LookRotation(targetPosition - transform.position);
     }

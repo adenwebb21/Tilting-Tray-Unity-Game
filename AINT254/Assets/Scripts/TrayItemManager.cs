@@ -15,11 +15,11 @@ public class TrayItemManager : MonoBehaviour {
 
         startingOptions = new Vector3[5];
 
-        //startingOptions[0] = new Vector3(-0.36f, 2f, -28.8f);
-        //startingOptions[1] = new Vector3(0.103f, 2f, -28.8f);
-        //startingOptions[2] = new Vector3(-0.537f, 2f, -28.54f);
-        //startingOptions[3] = new Vector3(0.464f, 2f, -28.971f);
-        //startingOptions[4] = new Vector3(-0.031f, 2f, -28.842f);
+        startingOptions[0] = new Vector3(-0.36f, 2f, -28.8f);
+        startingOptions[1] = new Vector3(0.103f, 2f, -28.8f);
+        startingOptions[2] = new Vector3(-0.537f, 2f, -28.54f);
+        startingOptions[3] = new Vector3(0.464f, 2f, -28.971f);
+        startingOptions[4] = new Vector3(-0.031f, 2f, -28.842f);
 
 
         ResetTrayItems();
@@ -53,6 +53,7 @@ public class TrayItemManager : MonoBehaviour {
     public void ResetTrayItems()
     {
         GameObject[] currentlyInScene = GameObject.FindGameObjectsWithTag("TrayItems");
+
         foreach(GameObject trayItem in currentlyInScene)
         {
             Destroy(trayItem);
@@ -61,14 +62,14 @@ public class TrayItemManager : MonoBehaviour {
         selectedTrayItems = new GameObject[Random.Range(2, 6)];
 
         ChooseTrayItems();
-        
-        //for(int i = 0; i < selectedTrayItems.Length; i++)
-        //{
-        //    Instantiate(selectedTrayItems[i], startingOptions[Random.Range(0, 5)], new Quaternion(0, 0, 0, 0));
-            
-        //}
 
-        Instantiate(cubePrefab, objectSpawn.transform.position, new Quaternion(0, 0, 0, 0));
+        for (int i = 0; i < selectedTrayItems.Length; i++)
+        {
+            Instantiate(selectedTrayItems[i], startingOptions[Random.Range(0, 5)], new Quaternion(0, 0, 0, 0));
+
+        }
+
+        //Instantiate(cubePrefab, objectSpawn.transform.position, new Quaternion(0, 0, 0, 0));
 
         GetComponent<ScoreKeeper>().SetScore(selectedTrayItems.Length);
     }
