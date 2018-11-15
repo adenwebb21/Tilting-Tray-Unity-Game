@@ -11,6 +11,7 @@ public class CheckpointMovement : MonoBehaviour
     public float waypointThreshold;
 
     public int currentCheckpointTarget;
+    [SerializeField]
     private Vector3 targetPosition;
     private Quaternion playerRotation;
     private Vector3 m_EulerAngleVelocity;
@@ -62,6 +63,12 @@ public class CheckpointMovement : MonoBehaviour
             currentCheckpointTarget++;
         }
 
+        targetPosition = checkpoints[currentCheckpointTarget].transform.position;
+    }
+
+    public void ResetTarget()
+    {
+        currentCheckpointTarget = 0;
         targetPosition = checkpoints[currentCheckpointTarget].transform.position;
     }
 }

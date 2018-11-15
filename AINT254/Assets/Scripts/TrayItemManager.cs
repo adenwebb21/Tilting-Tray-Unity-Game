@@ -9,18 +9,22 @@ public class TrayItemManager : MonoBehaviour {
     private Vector3[] startingOptions;
     private GameObject[] selectedTrayItems;
 
+    private int index;
+    private bool isSpawning;
+    private float timestamp;
+    private float timeBetweenObjectSpawns = 0.5f;
+
     private void Start()
     {
         selectedTrayItems = new GameObject[Random.Range(2, 6)];
 
-        startingOptions = new Vector3[5];
+        //startingOptions = new Vector3[5];
 
-        startingOptions[0] = new Vector3(-0.36f, 2f, -28.8f);
-        startingOptions[1] = new Vector3(0.103f, 2f, -28.8f);
-        startingOptions[2] = new Vector3(-0.537f, 2f, -28.54f);
-        startingOptions[3] = new Vector3(0.464f, 2f, -28.971f);
-        startingOptions[4] = new Vector3(-0.031f, 2f, -28.842f);
-
+        //startingOptions[0] = new Vector3(-0.36f, 2f, -28.8f);
+        //startingOptions[1] = new Vector3(0.103f, 2f, -28.8f);
+        //startingOptions[2] = new Vector3(-0.537f, 2f, -28.54f);
+        //startingOptions[3] = new Vector3(0.464f, 2f, -28.971f);
+        //startingOptions[4] = new Vector3(-0.031f, 2f, -28.842f);
 
         ResetTrayItems();
     }
@@ -59,18 +63,46 @@ public class TrayItemManager : MonoBehaviour {
             Destroy(trayItem);
         }
 
+        
+
         selectedTrayItems = new GameObject[Random.Range(2, 6)];
 
         ChooseTrayItems();
 
-        for (int i = 0; i < selectedTrayItems.Length; i++)
-        {
-            Instantiate(selectedTrayItems[i], startingOptions[Random.Range(0, 5)], new Quaternion(0, 0, 0, 0));
+        timestamp = Time.time + timeBetweenObjectSpawns;
+        isSpawning = true;
 
-        }
+        //index = 0;
+
+        //for (int i = 0; i < selectedTrayItems.Length; i++)
+        //{
+        //    index = i;
+        //    Invoke("InstantiateItem", 1f);
+        //}
 
         //Instantiate(cubePrefab, objectSpawn.transform.position, new Quaternion(0, 0, 0, 0));
 
         GetComponent<ScoreKeeper>().SetScore(selectedTrayItems.Length);
+    }
+
+    private void InstantiateItem()
+    {
+        Instantiate(selectedTrayItems[index], objectSpawn.transform.position, new Quaternion(0, 0, 0, 0));
+    }
+
+    private void Update()
+    {
+        if(isSpawning)
+        {
+            if(timestamp <= Time.time && index <= selectedTrayItems.Length - 1)
+            {
+                InstantiateItem();
+                index++;
+            }
+        }
+        else
+        {
+            index = 0;
+        }
     }
 }

@@ -18,7 +18,7 @@ public class RemoveTrayObj : MonoBehaviour
         if(itemTransform.position.y <= 0.2)
         {
             scoreKeeper.GetComponent<ScoreKeeper>().ReduceScore();
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
