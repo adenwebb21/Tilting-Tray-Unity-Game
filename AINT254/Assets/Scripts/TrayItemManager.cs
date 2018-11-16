@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrayItemManager : MonoBehaviour {
+public class TrayItemManager : MonoBehaviour
+{
 
     public GameObject spherePrefab, cubePrefab, cylinderPrefab;
     public Transform objectSpawn;
     private Vector3[] startingOptions;
     private GameObject[] selectedTrayItems;
 
-    private int index;
+    private int index = 0;
     private bool isSpawning;
     private float timestamp;
     private float timeBetweenObjectSpawns = 0.5f;
 
     private void Start()
     {
-        selectedTrayItems = new GameObject[Random.Range(2, 6)];
-
         //startingOptions = new Vector3[5];
 
         //startingOptions[0] = new Vector3(-0.36f, 2f, -28.8f);
@@ -33,11 +32,11 @@ public class TrayItemManager : MonoBehaviour {
     {
         int selection;
 
-        for(int i = 0; i < selectedTrayItems.Length; i++)
+        for (int i = 0; i < selectedTrayItems.Length; i++)
         {
             selection = Random.Range(0, 3);
 
-            switch(selection)
+            switch (selection)
             {
                 case 0:
                     selectedTrayItems[i] = spherePrefab;
@@ -58,19 +57,20 @@ public class TrayItemManager : MonoBehaviour {
     {
         GameObject[] currentlyInScene = GameObject.FindGameObjectsWithTag("TrayItems");
 
-        foreach(GameObject trayItem in currentlyInScene)
+        foreach (GameObject trayItem in currentlyInScene)
         {
             Destroy(trayItem);
         }
 
-        
+
 
         selectedTrayItems = new GameObject[Random.Range(2, 6)];
 
         ChooseTrayItems();
 
-        timestamp = Time.time + timeBetweenObjectSpawns;
         isSpawning = true;
+        timestamp = timeBetweenObjectSpawns;
+        index = 0;
 
         //index = 0;
 
@@ -92,17 +92,35 @@ public class TrayItemManager : MonoBehaviour {
 
     private void Update()
     {
+        //    if(isSpawning)
+        //    {
+        //        if(timestamp <= Time.time && index <= selectedTrayItems.Length - 1)
+        //        {
+        //            InstantiateItem();
+        //            index++;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        index = 0;
+        //    }
+        //}
+
         if(isSpawning)
         {
-            if(timestamp <= Time.time && index <= selectedTrayItems.Length - 1)
+            timestamp -= Time.deltaTime;
+
+            if (timestamp <= 0 && index <= selectedTrayItems.Length - 1)
             {
                 InstantiateItem();
+                timestamp = timeBetweenObjectSpawns;
                 index++;
             }
+
+
         }
-        else
-        {
-            index = 0;
-        }
+        
+
+        
     }
 }
