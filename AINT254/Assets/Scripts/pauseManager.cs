@@ -17,7 +17,7 @@ public class pauseManager : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(pauseMenu.active)
+            if(pauseMenu.activeSelf)
             {
                 Resume();
             }
@@ -32,13 +32,13 @@ public class pauseManager : MonoBehaviour {
     {
         Time.timeScale = 0.0f;
         pauseMenu.SetActive(true);
-        tray.GetComponent<FirstPersonTrayControls>().enabled = false;
+        tray.GetComponent<TrayMovementRevised>().enabled = false;
     }
 
     public void Resume()
     {
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
-        tray.GetComponent<FirstPersonTrayControls>().enabled = true;
+        tray.GetComponent<TrayMovementRevised>().enabled = true;
     }
 }
