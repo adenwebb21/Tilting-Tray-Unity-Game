@@ -30,6 +30,7 @@ public class TrayCheckpointMovement : MonoBehaviour
 
     void Update()
     {
+
         if (Vector3.Distance(transform.position, targetPosition) < waypointThreshold)
         {
             NextCheckpoint();

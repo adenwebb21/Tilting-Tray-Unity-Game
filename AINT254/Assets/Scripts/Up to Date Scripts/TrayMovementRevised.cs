@@ -15,6 +15,9 @@ public class TrayMovementRevised : MonoBehaviour
     private Quaternion trayRotation;
     private Vector3 trayRotationVector;
 
+    private Vector3 forwardRotationVector;
+    private Vector3 sidewaysRotationVector;
+
     private void Start()
     {
         trayRigidbody = gameObject.GetComponent<Rigidbody>();
@@ -27,15 +30,20 @@ public class TrayMovementRevised : MonoBehaviour
 
         forwardRotation = verticalSpeed * Input.GetAxis("Mouse Y");
 
-        trayRotationVector.x = forwardRotation;
-        trayRotationVector.z = sidewaysRotation;
+        //trayRotationVector.x = forwardRotation;
+        //trayRotationVector.z = sidewaysRotation;
+
+        forwardRotationVector = transform.right * forwardRotation;
+        sidewaysRotationVector = transform.forward * sidewaysRotation;
+
+        
     }
 
     private void FixedUpdate()
     {
-        Vector3 rotVec = new Vector3(trayRotationVector.x, 0, -trayRotationVector.z);
-        Quaternion rot = Quaternion.Euler(rotVec);
+        //Vector3 rotVec = new Vector3(trayRotationVector.x, 0, -trayRotationVector.z);
+        //Quaternion rot = Quaternion.Euler(rotVec);
 
-        trayRigidbody.angularVelocity = rotVec;
+        trayRigidbody.angularVelocity = forwardRotationVector - sidewaysRotationVector;
     }
 }

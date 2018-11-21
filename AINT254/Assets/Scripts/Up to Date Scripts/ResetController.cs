@@ -24,7 +24,6 @@ public class ResetController : MonoBehaviour {
         transform.rotation = startRotation;
         movementScript.traySpeed = 0;
         movementScript.t = 0;
-        
 
         trayTransform.rotation = new Quaternion(0f, 0f, 0f, 0f);
 
