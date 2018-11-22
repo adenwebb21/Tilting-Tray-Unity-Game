@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class ResetController : MonoBehaviour {
 
-    private Vector3 startLocation;
-    private Quaternion startRotation;
+    [SerializeField]
+    private FloatVariable traySpeed, initialAcceleration;
 
+    [SerializeField]
+    private IntVariable currentCheckpointTarget;
+
+    private Vector3 startLocation;
+    private Quaternion emptyRotation = Quaternion.identity;
     private Transform trayTransform;
     private TrayCheckpointMovement movementScript;
+
 
     private void Start()
     {
         trayTransform = GameObject.Find("Tray").transform;
         movementScript = gameObject.GetComponent<TrayCheckpointMovement>();
         startLocation = transform.position;
-        startRotation = transform.rotation;
     }
 
     public void ResetPlayer()
     {
         transform.position = startLocation;
-        transform.rotation = startRotation;
-        movementScript.traySpeed = 0;
-        movementScript.t = 0;
+        transform.rotation = emptyRotation;
+        trayTransform.rotation = emptyRotation;
 
-        trayTransform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        traySpeed.Value = 0;
+        initialAcceleration.Value = 0;      
+        currentCheckpointTarget.Value = 0;
 
         movementScript.ResetTarget();
+
     }
 
 }

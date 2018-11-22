@@ -5,5 +5,18 @@ using UnityEngine;
 [CreateAssetMenu]
 public class IntVariable : ScriptableObject
 {
-    public int Value;
+    [SerializeField]
+    private int value;
+
+    public int Value
+    {
+        get
+        {
+            return value;
+        }
+        set
+        {
+            this.value = value;
+        }
+    }
 }

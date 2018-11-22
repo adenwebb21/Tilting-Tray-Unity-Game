@@ -4,46 +4,35 @@ using UnityEngine;
 
 public class TrayMovementRevised : MonoBehaviour
 {
+    [SerializeField]
+    private float horizontalSpeed = 2.0F;
+    [SerializeField]
+    private float verticalSpeed = 2.0F;
 
-    public float horizontalSpeed = 2.0F;
-    public float verticalSpeed = 2.0F;
-
-    float forwardRotation = 0;
-    float sidewaysRotation = 0;
+    private float forwardRotation = 0;
+    private float sidewaysRotation = 0;
 
     private Rigidbody trayRigidbody;
     private Quaternion trayRotation;
-    private Vector3 trayRotationVector;
 
-    private Vector3 forwardRotationVector;
-    private Vector3 sidewaysRotationVector;
+    private Vector3 forwardRotationVector, sidewaysRotationVector;
 
     private void Start()
     {
         trayRigidbody = gameObject.GetComponent<Rigidbody>();
-        trayRotationVector = new Vector3();
     }
 
     void Update()
     {
         sidewaysRotation = horizontalSpeed * Input.GetAxis("Mouse X");
-
         forwardRotation = verticalSpeed * Input.GetAxis("Mouse Y");
 
-        //trayRotationVector.x = forwardRotation;
-        //trayRotationVector.z = sidewaysRotation;
-
         forwardRotationVector = transform.right * forwardRotation;
-        sidewaysRotationVector = transform.forward * sidewaysRotation;
-
-        
+        sidewaysRotationVector = transform.forward * sidewaysRotation;      
     }
 
     private void FixedUpdate()
     {
-        //Vector3 rotVec = new Vector3(trayRotationVector.x, 0, -trayRotationVector.z);
-        //Quaternion rot = Quaternion.Euler(rotVec);
-
         trayRigidbody.angularVelocity = forwardRotationVector - sidewaysRotationVector;
     }
 }

@@ -210,7 +210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &41541490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2399,9 +2399,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1312952556}
-  m_angleX: 11
-  m_distance: 2.2
+  angleX: 1.5
+  distance: 2.5
   height: 1
+  rotationSmoothing: 7
 --- !u!95 &622368125
 Animator:
   serializedVersion: 3
@@ -2923,6 +2924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7f04bfa5572b947ab4092aee2a8198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 41541489}
   tray: {fileID: 1312952555}
 --- !u!114 &782651589
 MonoBehaviour:
@@ -3530,6 +3532,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 2
   verticalSpeed: 2
+  forwardRotation: 0
+  sidewaysRotation: 0
+  body: {fileID: 0}
+  trayRotation: {x: 0, y: 0, z: 0, w: 0}
+  trayRotationVector: {x: 0, y: 0, z: 0}
 --- !u!145 &1012958774
 SpringJoint:
   m_ObjectHideFlags: 0
@@ -4581,6 +4588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ac5a11dcf9204db17aafd2f85405f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traySpeed: {fileID: 0}
+  initialAcceleration: {fileID: 0}
+  currentCheckpointTarget: {fileID: 0}
 --- !u!114 &1269863578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4863,22 +4873,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6acfceb1018b12843a1bb02b7ff4c2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traySpeed: 0
-  maxTraySpeed: 3
+  traySpeed: {fileID: 11400000, guid: 87c46234b274153429e18a033163159c, type: 2}
+  maxTraySpeed: {fileID: 11400000, guid: dcdd6c30240caf44e81aa48d29a3e8be, type: 2}
+  initialAccelerationT: {fileID: 11400000, guid: 3073d711a33fd6c42806e86b017c3c70,
+    type: 2}
   checkpoints:
-  - {fileID: 111152478}
-  - {fileID: 673049350}
-  - {fileID: 233002023}
-  - {fileID: 748958663}
-  - {fileID: 1976063918}
-  - {fileID: 53426966}
-  - {fileID: 72725067}
-  - {fileID: 1040230541}
-  - {fileID: 731631095}
-  - {fileID: 1014518849}
+  - {fileID: 111152479}
+  - {fileID: 673049351}
+  - {fileID: 233002024}
+  - {fileID: 748958664}
+  - {fileID: 1976063919}
+  - {fileID: 53426967}
+  - {fileID: 72725068}
+  - {fileID: 1040230542}
+  - {fileID: 731631096}
+  - {fileID: 1014518850}
   waypointThreshold: 3
-  currentCheckpointTarget: 0
-  t: 0
+  rotationSpeed: 2
+  currentCheckpointTarget: {fileID: 11400000, guid: 2bc3eeafdfe52d147bf48123754c11cb,
+    type: 2}
 --- !u!114 &1312952559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4890,6 +4903,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ac5a11dcf9204db17aafd2f85405f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traySpeed: {fileID: 11400000, guid: 87c46234b274153429e18a033163159c, type: 2}
+  initialAcceleration: {fileID: 11400000, guid: 3073d711a33fd6c42806e86b017c3c70,
+    type: 2}
+  currentCheckpointTarget: {fileID: 11400000, guid: 2bc3eeafdfe52d147bf48123754c11cb,
+    type: 2}
 --- !u!54 &1312952560
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5196,6 +5214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ac5a11dcf9204db17aafd2f85405f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traySpeed: {fileID: 0}
+  initialAcceleration: {fileID: 0}
+  currentCheckpointTarget: {fileID: 0}
 --- !u!136 &1459104135
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -4,68 +4,76 @@ using UnityEngine;
 
 public class TrayCheckpointMovement : MonoBehaviour
 {
+    [SerializeField]
+    private FloatVariable traySpeed, maxTraySpeed, initialAccelerationT;
 
-    public float traySpeed;
-    public float maxTraySpeed;
-    public GameObject[] checkpoints;
-    public float waypointThreshold;
+    [SerializeField]
+    private Transform[] checkpoints;
 
-    public int currentCheckpointTarget;
+    [SerializeField]
+    private float waypointThreshold, rotationSpeed;
+
+    [SerializeField]
+    private IntVariable currentCheckpointTarget;
+
+    //private int currentCheckpointTarget;
     private Vector3 targetPosition;
     private Quaternion trayRotation;
-
     private Rigidbody trayBody;
-    private Transform trayPos;
-    private float rotationSpeed = 2f;
-    public float t = 0;
 
     void Start()
     {
         trayBody = GetComponent<Rigidbody>();
-        trayPos = transform;
+        currentCheckpointTarget.Value = 0;
 
-        currentCheckpointTarget = 0;
-        targetPosition = checkpoints[currentCheckpointTarget].transform.position;
+        AquireTargetPosition();
     }
 
     void Update()
     {
-
+        // When you reach a checpoint - select next one
         if (Vector3.Distance(transform.position, targetPosition) < waypointThreshold)
         {
             NextCheckpoint();
         }
 
-        traySpeed = Mathf.Lerp(0, maxTraySpeed, t);
-        t += 0.1f * Time.deltaTime;
+        // Slow at the start then slowly speed up
+        traySpeed.Value = Mathf.Lerp(0, maxTraySpeed.Value, initialAccelerationT.Value);
+        initialAccelerationT.Value += 0.1f * Time.deltaTime;
 
         trayRotation = Quaternion.LookRotation(targetPosition - transform.position);
     }
 
     private void FixedUpdate()
     {
-        trayBody.AddForce(transform.forward * traySpeed);
+        trayBody.AddForce(transform.forward * traySpeed.Value);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, trayRotation, Time.deltaTime * rotationSpeed);
     }
 
     private void NextCheckpoint()
     {
-        if (currentCheckpointTarget == checkpoints.Length - 1)
+        if (currentCheckpointTarget.Value == checkpoints.Length - 1)
         {
-            currentCheckpointTarget = 0;
+            currentCheckpointTarget.Value = 0;
         }
         else
         {
-            currentCheckpointTarget++;
+            currentCheckpointTarget.Value++;
         }
 
-        targetPosition = checkpoints[currentCheckpointTarget].transform.position;
+        AquireTargetPosition();
     }
 
     public void ResetTarget()
     {
-        currentCheckpointTarget = 0;
-        targetPosition = checkpoints[currentCheckpointTarget].transform.position;
+        currentCheckpointTarget.Value = 0;
+
+        AquireTargetPosition();
+    }
+
+    private void AquireTargetPosition()
+    {
+        targetPosition = checkpoints[currentCheckpointTarget.Value].transform.position;
     }
 }

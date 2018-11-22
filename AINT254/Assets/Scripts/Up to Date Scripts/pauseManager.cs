@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class pauseManager : MonoBehaviour {
 
-    private GameObject pauseMenu;
-    public GameObject tray;
-
-    private void Start()
-    {
-        pauseMenu = GameObject.FindGameObjectWithTag("ShowOnPause");
-        pauseMenu.SetActive(false);
-    }
+    [SerializeField]
+    private GameObject pauseMenu, tray;
 
     private void Update()
     {
@@ -32,13 +26,13 @@ public class pauseManager : MonoBehaviour {
     {
         Time.timeScale = 0.0f;
         pauseMenu.SetActive(true);
-        tray.GetComponent<TrayMovementRevised>().enabled = false;
+        tray.GetComponent<TrayCheckpointMovement>().enabled = false;
     }
 
     public void Resume()
     {
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
-        tray.GetComponent<TrayMovementRevised>().enabled = true;
+        tray.GetComponent<TrayCheckpointMovement>().enabled = true;
     }
 }

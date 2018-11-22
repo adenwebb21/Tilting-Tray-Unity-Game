@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TrayItemManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject spherePrefab, cubePrefab, cylinderPrefab;
 
-    public GameObject spherePrefab, cubePrefab, cylinderPrefab;
-    public Transform objectSpawn;
-    private Vector3[] startingOptions;
+    [SerializeField]
+    private Transform objectSpawn;
+
     private GameObject[] selectedTrayItems;
 
     private int index = 0;
@@ -17,14 +19,6 @@ public class TrayItemManager : MonoBehaviour
 
     private void Start()
     {
-        //startingOptions = new Vector3[5];
-
-        //startingOptions[0] = new Vector3(-0.36f, 2f, -28.8f);
-        //startingOptions[1] = new Vector3(0.103f, 2f, -28.8f);
-        //startingOptions[2] = new Vector3(-0.537f, 2f, -28.54f);
-        //startingOptions[3] = new Vector3(0.464f, 2f, -28.971f);
-        //startingOptions[4] = new Vector3(-0.031f, 2f, -28.842f);
-
         ResetTrayItems();
     }
 
@@ -62,8 +56,6 @@ public class TrayItemManager : MonoBehaviour
             Destroy(trayItem);
         }
 
-
-
         selectedTrayItems = new GameObject[Random.Range(2, 6)];
 
         ChooseTrayItems();
@@ -71,16 +63,6 @@ public class TrayItemManager : MonoBehaviour
         isSpawning = true;
         timestamp = timeBetweenObjectSpawns;
         index = 0;
-
-        //index = 0;
-
-        //for (int i = 0; i < selectedTrayItems.Length; i++)
-        //{
-        //    index = i;
-        //    Invoke("InstantiateItem", 1f);
-        //}
-
-        //Instantiate(cubePrefab, objectSpawn.transform.position, new Quaternion(0, 0, 0, 0));
 
         GetComponent<ScoreKeeper>().SetScore(selectedTrayItems.Length);
     }
@@ -92,20 +74,6 @@ public class TrayItemManager : MonoBehaviour
 
     private void Update()
     {
-        //    if(isSpawning)
-        //    {
-        //        if(timestamp <= Time.time && index <= selectedTrayItems.Length - 1)
-        //        {
-        //            InstantiateItem();
-        //            index++;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        index = 0;
-        //    }
-        //}
-
         if(isSpawning)
         {
             timestamp -= Time.deltaTime;
@@ -116,11 +84,6 @@ public class TrayItemManager : MonoBehaviour
                 timestamp = timeBetweenObjectSpawns;
                 index++;
             }
-
-
-        }
-        
-
-        
+        }  
     }
 }
