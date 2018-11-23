@@ -11,6 +11,7 @@ public class TrayItemManager : MonoBehaviour
     private Transform objectSpawn;
 
     private GameObject[] selectedTrayItems;
+    private GameObject tray;
 
     private int index = 0;
     private bool isSpawning;
@@ -20,6 +21,7 @@ public class TrayItemManager : MonoBehaviour
     private void Start()
     {
         ResetTrayItems();
+        tray = GameObject.Find("Tray");
     }
 
     private void ChooseTrayItems()
