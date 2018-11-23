@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
 {
-    [SerializeField]
-    private int score;
+    public int score;
 
     private string scoreString = "Score: ";
     private GUIStyle style = new GUIStyle();

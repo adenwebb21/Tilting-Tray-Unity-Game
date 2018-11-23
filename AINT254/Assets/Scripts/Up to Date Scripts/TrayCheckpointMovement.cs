@@ -25,6 +25,8 @@ public class TrayCheckpointMovement : MonoBehaviour
     {
         trayBody = GetComponent<Rigidbody>();
         currentCheckpointTarget.Value = 0;
+        traySpeed.Value = 0;
+        initialAccelerationT.Value = 0;
 
         AquireTargetPosition();
     }
@@ -37,15 +39,15 @@ public class TrayCheckpointMovement : MonoBehaviour
             NextCheckpoint();
         }
 
-        // Slow at the start then slowly speed up
-        traySpeed.Value = Mathf.Lerp(0, maxTraySpeed.Value, initialAccelerationT.Value);
-        initialAccelerationT.Value += 0.1f * Time.deltaTime;
-
         trayRotation = Quaternion.LookRotation(targetPosition - transform.position);
     }
 
     private void FixedUpdate()
     {
+        // Slow at the start then slowly speed up
+        traySpeed.Value = Mathf.Lerp(0, maxTraySpeed.Value, initialAccelerationT.Value);
+        initialAccelerationT.Value += 0.1f * Time.deltaTime;
+
         trayBody.AddForce(transform.forward * traySpeed.Value);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, trayRotation, Time.deltaTime * rotationSpeed);

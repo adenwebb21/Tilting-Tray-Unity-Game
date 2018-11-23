@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerEndLevel : MonoBehaviour {
 
-    public pauseManager pause;
+    public pauseManager winScreen;
 
     private void OnTriggerEnter(Collider other)
-    {        
-        pause.Pause();
+    {
+        winScreen.ShowWinScreen();
     }
 }

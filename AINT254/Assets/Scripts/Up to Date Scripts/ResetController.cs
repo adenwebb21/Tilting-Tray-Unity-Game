@@ -28,6 +28,7 @@ public class ResetController : MonoBehaviour {
         transform.position = startLocation;
         transform.rotation = emptyRotation;
         trayTransform.rotation = emptyRotation;
+        gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
 
         traySpeed.Value = 0;
         initialAcceleration.Value = 0;      
