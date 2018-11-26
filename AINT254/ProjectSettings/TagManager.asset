@@ -7,6 +7,11 @@ TagManager:
   - TrayItems
   - ScoreKeeper
   - ShowOnPause
+  - Fire
+  - Pit
+  - PlayerSpawner
+  - DeadPlayer
+  - ShowOnVictory
   layers:
   - Default
   - TransparentFX
