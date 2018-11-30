@@ -11,7 +11,7 @@ public class ResetPlayer : MonoBehaviour {
     {
         gameObject.tag = "DeadPlayer";
         isBeingDestroyed = true;
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 1.5f);
     }
 
     private void Update()

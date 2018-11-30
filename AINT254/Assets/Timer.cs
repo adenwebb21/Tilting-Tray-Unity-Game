@@ -29,7 +29,6 @@ public class Timer : MonoBehaviour {
         if(!isTimerStopped)
         {
             timer.Value += Time.deltaTime;
-            timer.Value = timer.Value % 60;
         }       
     }
 }

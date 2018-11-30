@@ -16,8 +16,9 @@ public class UIController : MonoBehaviour {
     private bool isVictoryActive = false;
 
     private void Start()
-    {
+    {       
         cursorScript = gameObject.GetComponent<LockCursor>();
+        Resume();
     }
 
     private void Update()
@@ -59,10 +60,22 @@ public class UIController : MonoBehaviour {
         isVictoryActive = true;
 
         Time.timeScale = 0f;
+        cursorScript.Unlock();
         timer.StopTimer();
         VictoryScreen.SetActive(true);
         VictoryScreen.GetComponent<PopulateVictoryPanel>().CalculateRank();
         VictoryScreen.GetComponent<PopulateVictoryPanel>().DisplayTime();
+    }
+
+    public void RestartButton()
+    {
+        isVictoryActive = false;
+
+        Time.timeScale = 1f;
+        cursorScript.Lock();
+        VictoryScreen.SetActive(false);
+
+        SceneManager.LoadScene("Labyrinth");
     }
 
     
