@@ -31,6 +31,7 @@ public class ContactPit : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
+            gameObject.GetComponent<AudioSource>().PlayDelayed(0.3f);
             timestamp = timeToDeath;
         }
     }

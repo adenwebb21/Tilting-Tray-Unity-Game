@@ -12,6 +12,7 @@ TagManager:
   - PlayerSpawner
   - DeadPlayer
   - ShowOnVictory
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -13,16 +13,24 @@ public class UIController : MonoBehaviour {
     [SerializeField]
     private GameObject VictoryScreen;
 
+    private PlayerSoundManager playerSound;
+
     private bool isVictoryActive = false;
 
     private void Start()
     {       
         cursorScript = gameObject.GetComponent<LockCursor>();
+        playerSound = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSoundManager>();
         Resume();
     }
 
     private void Update()
     {
+        if(playerSound == null)
+        {
+            playerSound = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSoundManager>();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && !isVictoryActive)
         {
             if (pauseMenu.activeSelf)
@@ -44,6 +52,7 @@ public class UIController : MonoBehaviour {
     public void Pause()
     {
         cursorScript.Unlock();
+        playerSound.StopAllSounds();
         Time.timeScale = 0.0f;
         pauseMenu.SetActive(true);
     }
@@ -51,6 +60,7 @@ public class UIController : MonoBehaviour {
     public void Resume()
     {
         cursorScript.Lock();
+        playerSound.ResumeSounds();
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
     }
@@ -58,6 +68,7 @@ public class UIController : MonoBehaviour {
     public void TriggerVictoryScreen()
     {
         isVictoryActive = true;
+        playerSound.StopAllSounds();
 
         Time.timeScale = 0f;
         cursorScript.Unlock();
@@ -70,6 +81,7 @@ public class UIController : MonoBehaviour {
     public void RestartButton()
     {
         isVictoryActive = false;
+        playerSound.ResumeSounds();
 
         Time.timeScale = 1f;
         cursorScript.Lock();

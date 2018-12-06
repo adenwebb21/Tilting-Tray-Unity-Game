@@ -11,9 +11,12 @@ public class VictoryScreen : MonoBehaviour {
     [SerializeField]
     private FloatVariable playerColourLerp;
 
+    [SerializeField]
+    private CurrentPlayerColour colourScript;
+
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player" && playerColourLerp.Value == 0.5f)
+        if (collision.gameObject.tag == "Player" && playerColourLerp.Value == 0.5f && colourScript.isColoured)
         {
             uiScript.TriggerVictoryScreen();
         }

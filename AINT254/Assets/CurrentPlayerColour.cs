@@ -8,18 +8,22 @@ public class CurrentPlayerColour : MonoBehaviour {
     private FloatVariable currentColourLerp;
 
     private Renderer rend;
+    private PlayerSoundManager playerSound;
 
-    private bool isUncoloured;
+    public bool isColoured;
 
     private void Start()
     {
-        isUncoloured = true;
+        isColoured = false;
         rend = gameObject.GetComponent<Renderer>();
+        playerSound = gameObject.GetComponent<PlayerSoundManager>();
+
+        currentColourLerp.Value = 0.5f;
     }
 
     private void Update()
     {
-        if(!isUncoloured)
+        if(isColoured)
         {
             rend.material.color = Color.Lerp(Color.red, Color.blue, currentColourLerp.Value);
         }
@@ -27,7 +31,8 @@ public class CurrentPlayerColour : MonoBehaviour {
 
     public void AddBlue()
     {
-        isUncoloured = false;
+        playerSound.AddPaint();
+        isColoured = true;
 
         if(currentColourLerp.Value != 0f)
         {
@@ -41,7 +46,8 @@ public class CurrentPlayerColour : MonoBehaviour {
 
     public void AddRed()
     {
-        isUncoloured = false;
+        playerSound.AddPaint();
+        isColoured = true;
 
         if (currentColourLerp.Value != 1f)
         {
