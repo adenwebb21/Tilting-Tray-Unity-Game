@@ -20,8 +20,8 @@ public class LabyrinthMover : MonoBehaviour
     private Quaternion trayRotation;
     private Transform labTransform;
 
-    private bool reachedLimit = false;
-    public float t;
+    //private bool reachedLimit = false;
+    //public float t;
     private Vector3 eulers;
 
     private Vector3 forwardRotationVector, sidewaysRotationVector;
@@ -30,7 +30,7 @@ public class LabyrinthMover : MonoBehaviour
     {
         trayRigidbody = gameObject.GetComponent<Rigidbody>();
         labTransform = transform;
-        reachedLimit = false;
+        //reachedLimit = false;
     }
 
     void Update()
@@ -44,18 +44,17 @@ public class LabyrinthMover : MonoBehaviour
         forwardRotationVector = new Vector3(forwardRotation, 0, 0);
         sidewaysRotationVector = new Vector3(0, 0, sidewaysRotation);
 
-
         eulers = transform.rotation.eulerAngles;
-        t = eulers.x;
+        //t = eulers.x;
 
-        if ((eulers.x > 350 || eulers.x < 10) && (eulers.z > 355 || eulers.z < 5))
-        {
-            reachedLimit = false;
-        }
-        else
-        {
-            reachedLimit = true;
-        }
+        //if ((eulers.x > 350 || eulers.x < 10) && (eulers.z > 355 || eulers.z < 5))
+        //{
+        //    reachedLimit = false;
+        //}
+        //else
+        //{
+        //    reachedLimit = true;
+        //}
     }
 
     private void FixedUpdate()
