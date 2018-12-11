@@ -6,10 +6,10 @@ using UnityEngine;
 public class PopulateVictoryPanel : MonoBehaviour {
 
     [SerializeField]
-    private Text rank, timer;
+    private Text rank, timer, highscore;
 
     [SerializeField]
-    private FloatVariable timerObject;
+    private FloatVariable timerObject, highScore;
 
 	public void CalculateRank()
     {
@@ -18,6 +18,12 @@ public class PopulateVictoryPanel : MonoBehaviour {
 
     public void DisplayTime()
     {
+        if (timerObject.Value < highScore.Value || highScore.Value == 0)
+        {
+            highScore.Value = timerObject.Value;
+        }
+        
+        highscore.text += highScore.Value.ToString("f1");
         timer.text += timerObject.Value.ToString("f1");
     }
 }
