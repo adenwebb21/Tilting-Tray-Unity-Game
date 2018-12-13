@@ -11,7 +11,7 @@ public class ResetPlayer : MonoBehaviour {
     {
         gameObject.tag = "DeadPlayer";
         isBeingDestroyed = true;
-        gameObject.GetComponent<Rigidbody>().drag = 500;
+        //gameObject.GetComponent<Rigidbody>().drag = 500;
         Destroy(gameObject, 1.5f);
     }
 
