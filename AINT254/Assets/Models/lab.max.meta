@@ -4,44 +4,47 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Box001
-    100002: //RootNode
-    100004: Object001
-    100006: Object002
-    100008: cornercap1
-    100010: cornercap2
-    100012: cornercap3
-    100014: cornercap4
+    100002: cornercap1
+    100004: cornercap2
+    100006: cornercap3
+    100008: cornercap4
+    100010: //RootNode
+    100012: Object001
+    100014: Object002
+    100016: FloorOne
+    100018: FloorTwo
     400000: Box001
-    400002: //RootNode
-    400004: Object001
-    400006: Object002
-    400008: cornercap1
-    400010: cornercap2
-    400012: cornercap3
-    400014: cornercap4
+    400002: cornercap1
+    400004: cornercap2
+    400006: cornercap3
+    400008: cornercap4
+    400010: //RootNode
+    400012: Object001
+    400014: Object002
+    400016: FloorOne
+    400018: FloorTwo
     2100000: Wood
     2100002: Base
     2100004: Bolts
     2100006: Brass
-    2100008: 'Material #26'
-    2100010: 'Material #30'
-    2100012: 'Material #29'
-    2100014: 'Material #31'
-    2100016: 'Material #28'
     2300000: Box001
-    2300002: Object001
-    2300004: Object002
-    2300006: cornercap1
-    2300008: cornercap2
-    2300010: cornercap3
-    2300012: cornercap4
+    2300002: cornercap1
+    2300004: cornercap2
+    2300006: cornercap3
+    2300008: cornercap4
+    2300010: Object001
+    2300012: Object002
+    2300014: FloorOne
+    2300016: FloorTwo
     3300000: Box001
-    3300002: Object001
-    3300004: Object002
-    3300006: cornercap1
-    3300008: cornercap2
-    3300010: cornercap3
-    3300012: cornercap4
+    3300002: cornercap1
+    3300004: cornercap2
+    3300006: cornercap3
+    3300008: cornercap4
+    3300010: Object001
+    3300012: Object002
+    3300014: FloorOne
+    3300016: FloorTwo
     4300000: Object001
     4300002: Box001
     4300004: Object002
@@ -49,9 +52,10 @@ ModelImporter:
     4300008: cornercap2
     4300010: cornercap3
     4300012: cornercap4
+    4300014: FloorOne
+    4300016: FloorTwo
     7400000: Take 001
     9500000: //RootNode
-    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
