@@ -35,6 +35,8 @@ public class ContactPit : MonoBehaviour {
             //timestamp = timeToDeath;
 
             gameObject.GetComponent<AudioSource>().Play();
+
+            timer.Value += 10;
             playerSpawner.GetComponent<PlayerSpawnManager>().SpawnNewPlayer();
             collision.gameObject.GetComponent<ResetPlayer>().DestroyThisPlayer();
 
