@@ -13,6 +13,9 @@ ModelImporter:
     100014: Object002
     100016: FloorOne
     100018: FloorTwo
+    100020: FloorTwo_COL_01
+    100022: FloorTwo_COL_02
+    100024: Walls
     400000: Box001
     400002: cornercap1
     400004: cornercap2
@@ -23,6 +26,9 @@ ModelImporter:
     400014: Object002
     400016: FloorOne
     400018: FloorTwo
+    400020: FloorTwo_COL_01
+    400022: FloorTwo_COL_02
+    400024: Walls
     2100000: Wood
     2100002: Base
     2100004: Bolts
@@ -36,6 +42,9 @@ ModelImporter:
     2300012: Object002
     2300014: FloorOne
     2300016: FloorTwo
+    2300018: FloorTwo_COL_01
+    2300020: FloorTwo_COL_02
+    2300022: Walls
     3300000: Box001
     3300002: cornercap1
     3300004: cornercap2
@@ -45,6 +54,9 @@ ModelImporter:
     3300012: Object002
     3300014: FloorOne
     3300016: FloorTwo
+    3300018: FloorTwo_COL_01
+    3300020: FloorTwo_COL_02
+    3300022: Walls
     4300000: Object001
     4300002: Box001
     4300004: Object002
@@ -54,6 +66,9 @@ ModelImporter:
     4300012: cornercap4
     4300014: FloorOne
     4300016: FloorTwo
+    4300018: Walls
+    4300020: FloorTwo_COL_01
+    4300022: FloorTwo_COL_02
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}

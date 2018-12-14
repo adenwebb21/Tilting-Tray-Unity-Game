@@ -10,6 +10,6 @@ public class ShowTimerOnScreen : MonoBehaviour {
 
     private void Update()
     {
-        gameObject.GetComponent<Text>().text = "Timer: " + timer.Value.ToString("f1");
+        gameObject.GetComponent<Text>().text = timer.Value.ToString("f1");
     }
 }

@@ -9,7 +9,7 @@ public class PlayerSoundManager : MonoBehaviour {
     private AudioSource ballRolling, ballHit, paintAdd, playerDeath;
     private AudioSource[] aSources;
 
-    public float maxVelocity;
+    private float maxVelocity;
 
     private bool isSoundStopped;
 

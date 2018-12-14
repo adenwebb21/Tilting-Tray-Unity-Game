@@ -5,7 +5,7 @@ using UnityEngine;
 public class ContactPit : MonoBehaviour {
 
     [SerializeField]
-    private FloatVariable timer;
+    private GameEvent playerDeath;
 
     private Material thisMaterial;
 
@@ -15,49 +15,51 @@ public class ContactPit : MonoBehaviour {
     private float maxDistance = 0.5f;
 
     private GameObject player;
-    private GameObject playerSpawner;
+    //private GameObject playerSpawner;
 
-    private float timeToDeath = 0.3f;
-    private float timestamp;
+    //private float timeToDeath = 0.3f;
+    //private float timestamp;
 
     private void Start()
     {
-        playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner");
+        //playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner");
         player = GameObject.FindGameObjectWithTag("Player");
         thisMaterial = GetComponent<Renderer>().material;
     }
+
+
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            playerDeath.Raise();
             //gameObject.GetComponent<AudioSource>().PlayDelayed(0.3f);
             //timestamp = timeToDeath;
 
             gameObject.GetComponent<AudioSource>().Play();
 
-            timer.Value += 10;
-            playerSpawner.GetComponent<PlayerSpawnManager>().SpawnNewPlayer();
-            collision.gameObject.GetComponent<ResetPlayer>().DestroyThisPlayer();
+            //playerSpawner.GetComponent<PlayerSpawnManager>().SpawnNewPlayer();
+            //collision.gameObject.GetComponent<ResetPlayer>().DestroyThisPlayer();
 
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            timestamp -= Time.deltaTime;
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        timestamp -= Time.deltaTime;
 
-            if (timestamp <= 0)
-            {
-                timer.Value += 10;
-                playerSpawner.GetComponent<PlayerSpawnManager>().SpawnNewPlayer();
+    //        if (timestamp <= 0)
+    //        {
+    //            timer.Value += 10;
+    //            playerSpawner.GetComponent<PlayerSpawnManager>().SpawnNewPlayer();
 
-                other.gameObject.GetComponent<ResetPlayer>().DestroyThisPlayer();
-            }
-        }
-    }
+    //            other.gameObject.GetComponent<ResetPlayer>().DestroyThisPlayer();
+    //        }
+    //    }
+    //}
 
     // Colour changing script modified version of script by https://stackoverflow.com/users/3785314/programmer found here https://stackoverflow.com/questions/43419915/lerp-color-based-on-distance-between-2-objects
     private void Update()

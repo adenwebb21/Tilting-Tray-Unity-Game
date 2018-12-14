@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour {
 
     private LockCursor cursorScript;
+
     [SerializeField]
     private GameObject pauseMenu;
+
+    //[SerializeField]
+    //private Timer timer;
+
     [SerializeField]
-    private Timer timer;
-    [SerializeField]
-    private GameObject VictoryScreen;
+    private GameObject victoryScreen;
 
     private PlayerSoundManager playerSound;
 
@@ -72,10 +75,10 @@ public class UIController : MonoBehaviour {
 
         Time.timeScale = 0f;
         cursorScript.Unlock();
-        timer.StopTimer();
-        VictoryScreen.SetActive(true);
-        VictoryScreen.GetComponent<PopulateVictoryPanel>().CalculateRank();
-        VictoryScreen.GetComponent<PopulateVictoryPanel>().DisplayTime();
+        //timer.StopTimer();
+        victoryScreen.SetActive(true);
+        victoryScreen.GetComponent<PopulateVictoryPanel>().CalculateRank();
+        victoryScreen.GetComponent<PopulateVictoryPanel>().DisplayTime();
     }
 
     public void RestartButton()
@@ -85,7 +88,7 @@ public class UIController : MonoBehaviour {
 
         Time.timeScale = 1f;
         cursorScript.Lock();
-        VictoryScreen.SetActive(false);
+        victoryScreen.SetActive(false);
 
         SceneManager.LoadScene("Labyrinth");
     }

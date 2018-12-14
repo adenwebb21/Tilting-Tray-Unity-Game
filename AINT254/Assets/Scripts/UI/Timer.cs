@@ -31,4 +31,9 @@ public class Timer : MonoBehaviour {
             timer.Value += Time.deltaTime;
         }       
     }
+
+    public void AddPenalty(float seconds)
+    {
+        timer.Value += seconds;
+    }
 }

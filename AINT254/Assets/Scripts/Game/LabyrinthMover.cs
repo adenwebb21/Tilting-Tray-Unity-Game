@@ -13,8 +13,8 @@ public class LabyrinthMover : MonoBehaviour
     private float forwardRotation = 0;
     private float sidewaysRotation = 0;
 
-    private float currentForwardRotation;
-    private float currentSidewaysRotation;
+    //private float currentForwardRotation;
+    //private float currentSidewaysRotation;
 
     private Rigidbody trayRigidbody;
     private Quaternion trayRotation;

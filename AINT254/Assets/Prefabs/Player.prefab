@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 82931563728505172}
   - component: {fileID: 82516411970752966}
   - component: {fileID: 82380295912326760}
+  - component: {fileID: 114389643932668320}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -594,7 +595,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f813ec838f83e42b19e0affff6a72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 0
+--- !u!114 &114389643932668320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850588590373852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de0f8d0ca140234fbf8b666d08ec6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 54d847811f4ed2e44a6bd38228348a47, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114984998713403322}
+        m_MethodName: DestroyThisPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114972909534398098
 MonoBehaviour:
   m_ObjectHideFlags: 1
