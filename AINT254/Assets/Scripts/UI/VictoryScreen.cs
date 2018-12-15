@@ -9,7 +9,7 @@ public class VictoryScreen : MonoBehaviour {
     private UIController uiScript;
 
     [SerializeField]
-    private GameEvent PlayerVictory;
+    private GameEvent playerVictory, playerDeath, wrongColour;
 
     [SerializeField]
     private FloatVariable playerColourLerp;
@@ -18,8 +18,13 @@ public class VictoryScreen : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player" && playerColourLerp.Value == 0.5f && collision.gameObject.GetComponent<CurrentPlayerColour>().isColoured)
         {
-            PlayerVictory.Raise();
+            playerVictory.Raise();
             //uiScript.TriggerVictoryScreen();
+        }
+        else
+        {
+            wrongColour.Raise();
+            playerDeath.Raise();
         }
     }
 }

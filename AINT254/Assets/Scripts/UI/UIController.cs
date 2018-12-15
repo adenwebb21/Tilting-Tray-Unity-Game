@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ISS;
 
 public class UIController : MonoBehaviour {
 
@@ -15,6 +16,9 @@ public class UIController : MonoBehaviour {
 
     [SerializeField]
     private GameObject victoryScreen;
+
+    [SerializeField]
+    private Animator wrongColourAnimator, plusTenAnimator;
 
     private PlayerSoundManager playerSound;
 
@@ -92,6 +96,30 @@ public class UIController : MonoBehaviour {
 
         SceneManager.LoadScene("Labyrinth");
     }
+
+    public void OnWrongColour()
+    {
+        wrongColourAnimator.SetBool("wrongColour", true);
+        StartCoroutine(gameObject.CountDownFrom(3.0f, () => { ResetWrongColour(); }));
+    }
+
+    public void OnAddTime()
+    {
+        plusTenAnimator.SetBool("+10", true);
+        StartCoroutine(gameObject.CountDownFrom(1f, () => { ResetAddTime(); }));
+    }
+
+    private void ResetAddTime()
+    {
+        plusTenAnimator.SetBool("+10", false);
+    }
+
+    private void ResetWrongColour()
+    {
+        wrongColourAnimator.SetBool("wrongColour", false);
+    }
+
+
 
     
 }
