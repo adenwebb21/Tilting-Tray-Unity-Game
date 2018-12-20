@@ -8,6 +8,9 @@ public class PlayerSpawnManager : MonoBehaviour {
     private Transform startingPos;
 
     [SerializeField]
+    private FloatVariable playerColour;
+
+    [SerializeField]
     private GameObject playerPrefab;
 
     public void SpawnNewPlayer()

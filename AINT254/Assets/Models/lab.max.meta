@@ -16,6 +16,10 @@ ModelImporter:
     100020: FloorTwo_COL_01
     100022: FloorTwo_COL_02
     100024: Walls
+    100026: FloorFour
+    100028: FloorThree
+    100030: InnerWallsJustPits
+    100032: InnerWallsLevel2
     400000: Box001
     400002: cornercap1
     400004: cornercap2
@@ -29,10 +33,17 @@ ModelImporter:
     400020: FloorTwo_COL_01
     400022: FloorTwo_COL_02
     400024: Walls
+    400026: FloorFour
+    400028: FloorThree
+    400030: InnerWallsJustPits
+    400032: InnerWallsLevel2
     2100000: Wood
     2100002: Base
     2100004: Bolts
     2100006: Brass
+    2100008: 'Material #75 Slot #1'
+    2100010: No Name
+    2100012: 'Material #131'
     2300000: Box001
     2300002: cornercap1
     2300004: cornercap2
@@ -45,6 +56,10 @@ ModelImporter:
     2300018: FloorTwo_COL_01
     2300020: FloorTwo_COL_02
     2300022: Walls
+    2300024: FloorFour
+    2300026: FloorThree
+    2300028: InnerWallsJustPits
+    2300030: InnerWallsLevel2
     3300000: Box001
     3300002: cornercap1
     3300004: cornercap2
@@ -57,6 +72,10 @@ ModelImporter:
     3300018: FloorTwo_COL_01
     3300020: FloorTwo_COL_02
     3300022: Walls
+    3300024: FloorFour
+    3300026: FloorThree
+    3300028: InnerWallsJustPits
+    3300030: InnerWallsLevel2
     4300000: Object001
     4300002: Box001
     4300004: Object002
@@ -69,6 +88,10 @@ ModelImporter:
     4300018: Walls
     4300020: FloorTwo_COL_01
     4300022: FloorTwo_COL_02
+    4300024: FloorThree
+    4300026: InnerWallsLevel2
+    4300028: FloorFour
+    4300030: InnerWallsJustPits
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}

@@ -25,6 +25,7 @@ public class VictoryScreen : MonoBehaviour {
         {
             wrongColour.Raise();
             playerDeath.Raise();
+            gameObject.GetComponent<AudioSource>().Play();
         }
     }
 }

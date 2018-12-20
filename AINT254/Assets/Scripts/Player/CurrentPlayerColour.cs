@@ -23,9 +23,17 @@ public class CurrentPlayerColour : MonoBehaviour {
 
     private void Update()
     {
-        if(isColoured)
+        if (isColoured)
         {
             rend.material.color = Color.Lerp(Color.red, Color.blue, currentColourLerp.Value);
+        }
+    }
+
+    public bool GetIsColoured
+    {
+        get
+        {
+            return isColoured;
         }
     }
 
