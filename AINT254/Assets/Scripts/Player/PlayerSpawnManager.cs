@@ -13,8 +13,12 @@ public class PlayerSpawnManager : MonoBehaviour {
     [SerializeField]
     private GameObject playerPrefab;
 
+    [SerializeField]
+    private GameEvent levelBoard;
+
     public void SpawnNewPlayer()
     {
+        levelBoard.Raise();
         Instantiate(playerPrefab, startingPos.position, new Quaternion(0, 0, 0, 1));
     }
 }

@@ -20,6 +20,9 @@ public class LabyrinthMover : MonoBehaviour
     private Quaternion trayRotation;
     private Transform labTransform;
 
+    [SerializeField]
+    private BoolVariable isUnderPlayerControl;
+
     //private bool reachedLimit = false;
     //public float t;
     private Vector3 eulers;
@@ -28,6 +31,7 @@ public class LabyrinthMover : MonoBehaviour
 
     private void Start()
     {
+        isUnderPlayerControl.Value = true;
         trayRigidbody = gameObject.GetComponent<Rigidbody>();
         labTransform = transform;
         //reachedLimit = false;
@@ -35,26 +39,48 @@ public class LabyrinthMover : MonoBehaviour
 
     void Update()
     {
-        sidewaysRotation = horizontalSpeed * Input.GetAxis("Mouse X");
-        forwardRotation = verticalSpeed * Input.GetAxis("Mouse Y");
+        if (isUnderPlayerControl.Value)
+        {
+            sidewaysRotation = horizontalSpeed * Input.GetAxis("Mouse X");
+            forwardRotation = verticalSpeed * Input.GetAxis("Mouse Y");
 
-        //forwardRotationVector = transform.right * forwardRotation;
-        //sidewaysRotationVector = transform.forward * sidewaysRotation;
+            //forwardRotationVector = transform.right * forwardRotation;
+            //sidewaysRotationVector = transform.forward * sidewaysRotation;
 
-        forwardRotationVector = new Vector3(forwardRotation, 0, 0);
-        sidewaysRotationVector = new Vector3(0, 0, sidewaysRotation);
+            forwardRotationVector = new Vector3(forwardRotation, 0, 0);
+            sidewaysRotationVector = new Vector3(0, 0, sidewaysRotation);
 
-        eulers = transform.rotation.eulerAngles;
-        //t = eulers.x;
+            eulers = transform.rotation.eulerAngles;
+            //t = eulers.x;
 
-        //if ((eulers.x > 350 || eulers.x < 10) && (eulers.z > 355 || eulers.z < 5))
-        //{
-        //    reachedLimit = false;
-        //}
-        //else
-        //{
-        //    reachedLimit = true;
-        //}
+            //if ((eulers.x > 350 || eulers.x < 10) && (eulers.z > 355 || eulers.z < 5))
+            //{
+            //    reachedLimit = false;
+            //}
+            //else
+            //{
+            //    reachedLimit = true;
+            //}
+        }
+        else if (Quaternion.Angle(labTransform.rotation, Quaternion.identity) <= 1f)
+        {
+            isUnderPlayerControl.Value = true;
+        }
+    }
+
+    //IEnumerator ReturnBoardRotationToZero()
+    //{
+    //    while (labTransform.rotation != Quaternion.identity)
+    //    {
+    //        labTransform.rotation = Quaternion.Slerp(labTransform.rotation, Quaternion.identity, Time.deltaTime * 3);
+    //        yield return null;
+    //    }       
+    //}
+
+    public void OnLevelBoard()
+    {
+        isUnderPlayerControl.Value = false;
+        //StartCoroutine("ReturnBoardRotationToZero");
     }
 
     private void FixedUpdate()
@@ -64,7 +90,11 @@ public class LabyrinthMover : MonoBehaviour
         //    trayRigidbody.angularDrag = Mathf.Max(Mathf.Abs(eulers.x), Mathf.Abs(eulers.z)) * 0.5f;            
         //}
 
-        transform.rotation = Quaternion.Euler(eulers.x, 0, eulers.z);
-        trayRigidbody.angularVelocity = new Vector3(forwardRotation, 0, -sidewaysRotation);
+        if(isUnderPlayerControl.Value)
+        {
+            transform.rotation = Quaternion.Euler(eulers.x, 0, eulers.z);
+            trayRigidbody.angularVelocity = new Vector3(forwardRotation, 0, -sidewaysRotation);
+        }
+        
     }
 }

@@ -10,6 +10,8 @@ ModelImporter:
     400002: InnerWallsLevel2
     400004: //RootNode
     2100000: No Name
+    2100002: Wood
+    2100004: 'Material #142'
     2300000: FloorThree
     2300002: InnerWallsLevel2
     3300000: FloorThree

@@ -20,6 +20,9 @@ public class UIController : MonoBehaviour {
     [SerializeField]
     private Animator wrongColourAnimator, plusTenAnimator;
 
+    [SerializeField]
+    private GameEvent nextLevel;
+
     private PlayerSoundManager playerSound;
 
     private bool isVictoryActive = false;
@@ -95,6 +98,18 @@ public class UIController : MonoBehaviour {
         victoryScreen.SetActive(false);
 
         SceneManager.LoadScene("Labyrinth");
+    }
+
+    public void NextLevelButton()
+    {
+        isVictoryActive = false;
+        playerSound.ResumeSounds();
+
+        Time.timeScale = 1f;
+        cursorScript.Lock();
+        victoryScreen.SetActive(false);
+
+        nextLevel.Raise();
     }
 
     public void OnWrongColour()

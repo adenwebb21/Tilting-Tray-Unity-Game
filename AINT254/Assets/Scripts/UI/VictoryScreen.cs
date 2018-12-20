@@ -14,18 +14,41 @@ public class VictoryScreen : MonoBehaviour {
     [SerializeField]
     private FloatVariable playerColourLerp;
 
+    [SerializeField]
+    private IntVariable currentLevel;
+
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player" && playerColourLerp.Value == 0.5f && collision.gameObject.GetComponent<CurrentPlayerColour>().isColoured)
+        switch(currentLevel.Value)
         {
-            playerVictory.Raise();
-            //uiScript.TriggerVictoryScreen();
+            case 0:
+            case 1:
+
+                if(collision.gameObject.tag == "Player")
+                {
+                    playerVictory.Raise();
+                }
+
+                break;
+            case 2:
+
+                if (collision.gameObject.tag == "Player" && playerColourLerp.Value == 0.5f && collision.gameObject.GetComponent<CurrentPlayerColour>().isColoured)
+                {
+                    playerVictory.Raise();
+                    //uiScript.TriggerVictoryScreen();
+                }
+                else
+                {
+                    wrongColour.Raise();
+                    playerDeath.Raise();
+                    gameObject.GetComponent<AudioSource>().Play();
+                }
+
+                break;
+            default:
+                break;
         }
-        else
-        {
-            wrongColour.Raise();
-            playerDeath.Raise();
-            gameObject.GetComponent<AudioSource>().Play();
-        }
+
+        
     }
 }
