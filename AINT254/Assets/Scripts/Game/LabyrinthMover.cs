@@ -10,8 +10,8 @@ public class LabyrinthMover : MonoBehaviour
     [SerializeField]
     private float verticalSpeed = 2.0F;
 
-    private float forwardRotation = 0;
-    private float sidewaysRotation = 0;
+    public float forwardRotation = 0;
+    public float sidewaysRotation = 0;
 
     //private float currentForwardRotation;
     //private float currentSidewaysRotation;
@@ -41,8 +41,8 @@ public class LabyrinthMover : MonoBehaviour
     {
         if (isUnderPlayerControl.Value)
         {
-            sidewaysRotation = horizontalSpeed * Input.GetAxis("Mouse X");
-            forwardRotation = verticalSpeed * Input.GetAxis("Mouse Y");
+            sidewaysRotation = horizontalSpeed * Input.GetAxis("Horizontal");
+            forwardRotation = verticalSpeed * Input.GetAxis("Vertical");
 
             //forwardRotationVector = transform.right * forwardRotation;
             //sidewaysRotationVector = transform.forward * sidewaysRotation;
