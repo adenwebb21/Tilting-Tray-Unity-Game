@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour {
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        currentLevel.Value = 0;
+        currentLevel.Value = 2;
         player.transform.position = levels[currentLevel.Value].transform.Find("spawn").transform.position;
     }
 

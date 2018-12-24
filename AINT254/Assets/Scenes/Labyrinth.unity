@@ -24011,6 +24011,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1273345952}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1284190859 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4477317160103442, guid: 211c206c9680688498695e8261c18f18,
+    type: 2}
+  m_PrefabInternal: {fileID: 1434046586}
 --- !u!1 &1306665682
 GameObject:
   m_ObjectHideFlags: 0
@@ -25107,7 +25112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1400664104
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25138,7 +25143,8 @@ MonoBehaviour:
   verticalSpeed: 2
   forwardRotation: 0
   sidewaysRotation: 0
-  isUnderPlayerControl: {fileID: 0}
+  isUnderPlayerControl: {fileID: 11400000, guid: 6d32b3528d5a0a149b8e772935588d78,
+    type: 2}
 --- !u!65 &1400664106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25239,7 +25245,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1400664103}
   m_LocalRotation: {x: -0.0000000059624403, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 989391564}
@@ -30674,6 +30680,7 @@ GameObject:
   - component: {fileID: 1448432682}
   - component: {fileID: 1448432681}
   - component: {fileID: 1448432683}
+  - component: {fileID: 1448432684}
   m_Layer: 0
   m_Name: PlayerSpawner
   m_TagString: PlayerSpawner
@@ -30692,7 +30699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8456b901b71ac56459d885241f8ce918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPos: []
+  startingPos:
+  - {fileID: 744714155}
+  - {fileID: 1284190859}
+  - {fileID: 1594534878}
   playerColour: {fileID: 11400000, guid: a67b6604ee4e5ed4aa803f57a9dc94bb, type: 2}
   level: {fileID: 11400000, guid: 64f98c4a55e79cf4c99ed21b24d71463, type: 2}
   playerPrefab: {fileID: 1850588590373852, guid: 013bc7bd4d6004a4dbd061808ad92c16,
@@ -30723,6 +30733,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: 54d847811f4ed2e44a6bd38228348a47, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1448432681}
+        m_MethodName: SpawnNewPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1448432684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1448432680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de0f8d0ca140234fbf8b666d08ec6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a82ea0b9fcbdca64daa49393ca8f341c, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -35072,7 +35110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1150702565}
   m_LocalRotation: {x: -0.0000000059624403, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 84718004}
