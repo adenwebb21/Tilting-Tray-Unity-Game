@@ -21,7 +21,7 @@ public class UIController : MonoBehaviour {
     private Animator wrongColourAnimator, plusTenAnimator;
 
     [SerializeField]
-    private GameEvent nextLevel;
+    private GameEvent nextLevel, restartLevel;
 
     private PlayerSoundManager playerSound;
 
@@ -36,7 +36,7 @@ public class UIController : MonoBehaviour {
 
     private void Update()
     {
-        if(playerSound == null)
+        if(playerSound == null && GameObject.FindGameObjectWithTag("Player"))
         {
             playerSound = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSoundManager>();
         }
@@ -96,8 +96,10 @@ public class UIController : MonoBehaviour {
         Time.timeScale = 1f;
         cursorScript.Lock();
         victoryScreen.SetActive(false);
+        pauseMenu.SetActive(false);
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
 
-        SceneManager.LoadScene("Labyrinth");
+        restartLevel.Raise();
     }
 
     public void NextLevelButton()

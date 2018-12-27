@@ -22,12 +22,21 @@ public class PlayerSpawnManager : MonoBehaviour {
 
     public void SpawnNewPlayer()
     {
-        levelBoard.Raise();
+        EraseAllCurrentPlayers();
         StartCoroutine(gameObject.CountDownFrom(1.4f, () => { ActuallySpawn(); }));
     }
 
     private void ActuallySpawn()
     {
         Instantiate(playerPrefab, startingPos[level.Value].position, new Quaternion(0, 0, 0, 1));
+    }
+
+    private void EraseAllCurrentPlayers()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+        {
+            Destroy(player);
+        }
     }
 }

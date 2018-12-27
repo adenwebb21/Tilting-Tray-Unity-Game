@@ -9,7 +9,13 @@ public class PopulateVictoryPanel : MonoBehaviour {
     private Text rank, timer, highscore;
 
     [SerializeField]
-    private FloatVariable timerObject, highScore;
+    private FloatVariable timerObject;
+
+    [SerializeField]
+    private FloatVariable[] highScores;
+
+    [SerializeField]
+    private IntVariable currentLevel;
 
 	public void CalculateRank()
     {
@@ -18,12 +24,12 @@ public class PopulateVictoryPanel : MonoBehaviour {
 
     public void DisplayTime()
     {
-        if (timerObject.Value < highScore.Value || highScore.Value == 0)
+        if (timerObject.Value < highScores[currentLevel.Value].Value || highScores[currentLevel.Value].Value == 0)
         {
-            highScore.Value = timerObject.Value;
+            highScores[currentLevel.Value].Value = timerObject.Value;
         }
         
-        highscore.text += highScore.Value.ToString("f1");
-        timer.text += timerObject.Value.ToString("f1");
+        highscore.text = "Highscore: " + highScores[currentLevel.Value].Value.ToString("f1");
+        timer.text = "Time: " + timerObject.Value.ToString("f1");
     }
 }

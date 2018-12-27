@@ -1854,6 +1854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7dc076436ed964f871579cc0f723db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingLevel: 0
   levelAnimators:
   - {fileID: 1150702574}
   - {fileID: 430396675}
@@ -10339,6 +10340,7 @@ MonoBehaviour:
   wrongColourAnimator: {fileID: 354878152}
   plusTenAnimator: {fileID: 1384563997}
   nextLevel: {fileID: 11400000, guid: a82ea0b9fcbdca64daa49393ca8f341c, type: 2}
+  restartLevel: {fileID: 11400000, guid: ced01e30bd2f33143b1efa540ff56086, type: 2}
 --- !u!114 &731254593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10817,7 +10819,7 @@ MonoBehaviour:
   playerDeath: {fileID: 11400000, guid: 54d847811f4ed2e44a6bd38228348a47, type: 2}
   wrongColour: {fileID: 11400000, guid: 486edebe5d9acb840bcaf6ec40b6ca55, type: 2}
   playerColourLerp: {fileID: 11400000, guid: a67b6604ee4e5ed4aa803f57a9dc94bb, type: 2}
-  currentLevel: {fileID: 0}
+  currentLevel: {fileID: 11400000, guid: 64f98c4a55e79cf4c99ed21b24d71463, type: 2}
 --- !u!82 &789058329
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11907,6 +11909,8 @@ GameObject:
   - component: {fileID: 931565152}
   - component: {fileID: 931565154}
   - component: {fileID: 931565155}
+  - component: {fileID: 931565156}
+  - component: {fileID: 931565157}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -11990,6 +11994,62 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &931565156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931565151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de0f8d0ca140234fbf8b666d08ec6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ced01e30bd2f33143b1efa540ff56086, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 931565152}
+        m_MethodName: StartTimer
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.4
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &931565157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931565151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de0f8d0ca140234fbf8b666d08ec6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a82ea0b9fcbdca64daa49393ca8f341c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 931565152}
+        m_MethodName: StartTimer
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1.4
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -12156,18 +12216,6 @@ Prefab:
     - target: {fileID: 4669490632883504, guid: 013bc7bd4d6004a4dbd061808ad92c16, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669490632883504, guid: 013bc7bd4d6004a4dbd061808ad92c16, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669490632883504, guid: 013bc7bd4d6004a4dbd061808ad92c16, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4669490632883504, guid: 013bc7bd4d6004a4dbd061808ad92c16, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 013bc7bd4d6004a4dbd061808ad92c16, type: 2}
@@ -19047,7 +19095,11 @@ MonoBehaviour:
   timer: {fileID: 421317910}
   highscore: {fileID: 852018791}
   timerObject: {fileID: 11400000, guid: 647f4188a537b0b44a0100b3561be775, type: 2}
-  highScore: {fileID: 11400000, guid: a14c0799176e4234e8031c449f1da1fa, type: 2}
+  highScores:
+  - {fileID: 11400000, guid: a14c0799176e4234e8031c449f1da1fa, type: 2}
+  - {fileID: 11400000, guid: 292791c0e6762bd40ba474c9852b5470, type: 2}
+  - {fileID: 11400000, guid: d365cb1d4ff647c4199dc189446eb183, type: 2}
+  currentLevel: {fileID: 11400000, guid: 64f98c4a55e79cf4c99ed21b24d71463, type: 2}
 --- !u!4 &1226911845 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4310591562423470, guid: 4d83cf7b46304434b8359bba9ae31011,
@@ -25112,7 +25164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1400664104
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25245,7 +25297,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1400664103}
   m_LocalRotation: {x: -0.0000000059624403, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 989391564}
@@ -30681,6 +30733,7 @@ GameObject:
   - component: {fileID: 1448432681}
   - component: {fileID: 1448432683}
   - component: {fileID: 1448432684}
+  - component: {fileID: 1448432685}
   m_Layer: 0
   m_Name: PlayerSpawner
   m_TagString: PlayerSpawner
@@ -30761,6 +30814,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: a82ea0b9fcbdca64daa49393ca8f341c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1448432681}
+        m_MethodName: SpawnNewPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1448432685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1448432680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de0f8d0ca140234fbf8b666d08ec6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ced01e30bd2f33143b1efa540ff56086, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -35110,7 +35191,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1150702565}
   m_LocalRotation: {x: -0.0000000059624403, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 84718004}

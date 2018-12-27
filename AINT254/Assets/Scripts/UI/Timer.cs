@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ISS;
 
 public class Timer : MonoBehaviour {
 
@@ -17,6 +18,18 @@ public class Timer : MonoBehaviour {
     public void StartTimer()
     {
         timer.Value = 0;
+    }
+
+    public void StartTimer(float delay)
+    {
+        StopTimer();
+        timer.Value = 0f;
+        StartCoroutine(gameObject.CountDownFrom(delay, () => { StartDelayed(); }));        
+    }
+
+    private void StartDelayed()
+    {
+        isTimerStopped = false;
     }
 
     public void StopTimer()
