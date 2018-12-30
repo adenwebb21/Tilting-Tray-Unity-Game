@@ -10,6 +10,9 @@ public class LevelManager : MonoBehaviour {
     public int startingLevel;
 
     [SerializeField]
+    private GameEvent showInfo;
+
+    [SerializeField]
     private Animator[] levelAnimators;
 
     [SerializeField]
@@ -19,10 +22,11 @@ public class LevelManager : MonoBehaviour {
     private GameObject[] levels;
 
     private void Start()
-    {
+    {      
         player = GameObject.FindGameObjectWithTag("Player");
         currentLevel.Value = startingLevel;
         player.transform.position = levels[currentLevel.Value].transform.Find("spawn").transform.position;
+        ShowInfo();
     }
 
     public void OnNextLevel()
@@ -42,6 +46,12 @@ public class LevelManager : MonoBehaviour {
         levels[currentLevel.Value].SetActive(true);
         levels[currentLevel.Value].transform.position = new Vector3(20, 0, 0);
         levelAnimators[currentLevel.Value].Play("levelSlideIn");
+        StartCoroutine(gameObject.CountDownFrom(1.3f, () => { ShowInfo(); }));
+    }
+
+    private void ShowInfo()
+    {
+        showInfo.Raise();
     }
 
     private void ResetLevelState()

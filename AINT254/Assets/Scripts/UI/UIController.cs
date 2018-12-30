@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using ISS;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
@@ -11,11 +12,14 @@ public class UIController : MonoBehaviour {
     [SerializeField]
     private GameObject pauseMenu;
 
+    [SerializeField]
+    private IntVariable currentLevel;
+
     //[SerializeField]
     //private Timer timer;
 
     [SerializeField]
-    private GameObject victoryScreen;
+    private GameObject victoryScreen, levelInfo;
 
     [SerializeField]
     private Animator wrongColourAnimator, plusTenAnimator;
@@ -26,6 +30,9 @@ public class UIController : MonoBehaviour {
     private PlayerSoundManager playerSound;
 
     private bool isVictoryActive = false;
+
+    [SerializeField]
+    private string[] levelInfos;
 
     private void Start()
     {       
@@ -100,6 +107,18 @@ public class UIController : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("Player"));
 
         restartLevel.Raise();
+    }
+
+    public void ShowInfo()
+    {
+        if(currentLevel.Value < levelInfos.Length)
+        {
+            levelInfo.GetComponentInChildren<Text>().text = levelInfos[currentLevel.Value];
+            levelInfo.SetActive(true);
+            cursorScript.Unlock();
+            playerSound.StopAllSounds();
+            Time.timeScale = 0.0f;
+        }      
     }
 
     public void NextLevelButton()
