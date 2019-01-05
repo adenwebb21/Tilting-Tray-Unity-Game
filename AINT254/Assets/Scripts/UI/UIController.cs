@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
+    [SerializeField]
     private LockCursor cursorScript;
 
     [SerializeField]
@@ -27,6 +28,7 @@ public class UIController : MonoBehaviour {
     [SerializeField]
     private GameEvent nextLevel, restartLevel;
 
+    [SerializeField]
     private PlayerSoundManager playerSound;
 
     private bool isVictoryActive = false;
@@ -36,8 +38,6 @@ public class UIController : MonoBehaviour {
 
     private void Start()
     {       
-        cursorScript = gameObject.GetComponent<LockCursor>();
-        playerSound = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSoundManager>();
         Resume();
     }
 
@@ -109,17 +109,17 @@ public class UIController : MonoBehaviour {
         restartLevel.Raise();
     }
 
-    public void ShowInfo()
-    {
-        if(currentLevel.Value < levelInfos.Length)
-        {
-            levelInfo.GetComponentInChildren<Text>().text = levelInfos[currentLevel.Value];
-            levelInfo.SetActive(true);
-            cursorScript.Unlock();
-            playerSound.StopAllSounds();
-            Time.timeScale = 0.0f;
-        }      
-    }
+    //public void ShowInfo()
+    //{
+    //    if(currentLevel.Value < levelInfos.Length)
+    //    {
+    //        levelInfo.GetComponentInChildren<Text>().text = levelInfos[currentLevel.Value];
+    //        levelInfo.SetActive(true);
+    //        cursorScript.Unlock();
+    //        playerSound.StopAllSounds();
+    //        Time.timeScale = 0.0f;
+    //    }      
+    //}
 
     public void NextLevelButton()
     {

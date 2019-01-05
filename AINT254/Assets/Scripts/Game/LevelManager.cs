@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         currentLevel.Value = startingLevel;
         player.transform.position = levels[currentLevel.Value].transform.Find("spawn").transform.position;
-        ShowInfo();
+        //ShowInfo();
     }
 
     public void OnNextLevel()
@@ -46,13 +46,13 @@ public class LevelManager : MonoBehaviour {
         levels[currentLevel.Value].SetActive(true);
         levels[currentLevel.Value].transform.position = new Vector3(20, 0, 0);
         levelAnimators[currentLevel.Value].Play("levelSlideIn");
-        StartCoroutine(gameObject.CountDownFrom(1.3f, () => { ShowInfo(); }));
+        //StartCoroutine(gameObject.CountDownFrom(1.3f, () => { ShowInfo(); }));
     }
 
-    private void ShowInfo()
-    {
-        showInfo.Raise();
-    }
+    //private void ShowInfo()
+    //{
+    //    showInfo.Raise();
+    //}
 
     private void ResetLevelState()
     {

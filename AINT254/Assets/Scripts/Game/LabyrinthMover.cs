@@ -41,8 +41,8 @@ public class LabyrinthMover : MonoBehaviour
     {
         if (isUnderPlayerControl.Value)
         {
-            sidewaysRotation = horizontalSpeed * Input.GetAxis("Horizontal");
-            forwardRotation = verticalSpeed * Input.GetAxis("Vertical");
+            sidewaysRotation = horizontalSpeed * Input.GetAxis("Mouse X");
+            forwardRotation = verticalSpeed * Input.GetAxis("Mouse Y");
 
             //forwardRotationVector = transform.right * forwardRotation;
             //sidewaysRotationVector = transform.forward * sidewaysRotation;
