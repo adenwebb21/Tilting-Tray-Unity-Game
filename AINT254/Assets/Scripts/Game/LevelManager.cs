@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour {
         levels[currentLevel.Value].SetActive(true);
         levels[currentLevel.Value].transform.position = new Vector3(20, 0, 0);
         levelAnimators[currentLevel.Value].Play("levelSlideIn");
+        gameObject.GetComponent<AudioSource>().Play();
         //StartCoroutine(gameObject.CountDownFrom(1.3f, () => { ShowInfo(); }));
     }
 
