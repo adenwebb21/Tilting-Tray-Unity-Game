@@ -9,7 +9,7 @@ public class ContactPit : MonoBehaviour {
 
     private Material thisMaterial;
 
-    private Color nearColour = Color.red;
+    public Color nearColour = new Color();
     private Color farColour = Color.black;
 
     private float maxDistance = 0.5f;

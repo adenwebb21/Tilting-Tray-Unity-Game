@@ -24,25 +24,30 @@ public class VictoryScreen : MonoBehaviour {
             case 0:
             case 1:
 
-                if(collision.gameObject.tag == "Player")
+                if (collision.gameObject.tag == "Player")
                 {
                     playerVictory.Raise();
                 }
 
                 break;
-            case 2:
+            case 2:               
+            case 3:
 
-                if (collision.gameObject.tag == "Player" && playerColourLerp.Value == 0.5f && collision.gameObject.GetComponent<CurrentPlayerColour>().isColoured)
+                if (collision.gameObject.tag == "Player")
                 {
-                    playerVictory.Raise();
-                    //uiScript.TriggerVictoryScreen();
+                    if (playerColourLerp.Value == 0.5f && collision.gameObject.GetComponent<CurrentPlayerColour>().isColoured)
+                    {
+                        playerVictory.Raise();
+                        //uiScript.TriggerVictoryScreen();
+                    }
+                    else
+                    {
+                        wrongColour.Raise();
+                        playerDeath.Raise();
+                        gameObject.GetComponent<AudioSource>().Play();
+                    }
                 }
-                else
-                {
-                    wrongColour.Raise();
-                    playerDeath.Raise();
-                    gameObject.GetComponent<AudioSource>().Play();
-                }
+                
 
                 break;
             default:

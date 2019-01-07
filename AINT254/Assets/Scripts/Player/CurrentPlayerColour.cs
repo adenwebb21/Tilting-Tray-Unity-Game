@@ -10,6 +10,9 @@ public class CurrentPlayerColour : MonoBehaviour {
     private Renderer rend;
     private PlayerSoundManager playerSound;
 
+    public Color red = new Color();
+    public Color blue = new Color();
+
     public bool isColoured;
 
     private void Start()
@@ -25,7 +28,7 @@ public class CurrentPlayerColour : MonoBehaviour {
     {
         if (isColoured)
         {
-            rend.material.color = Color.Lerp(Color.red, Color.blue, currentColourLerp.Value);
+            rend.material.color = Color.Lerp(red, blue, currentColourLerp.Value);
         }
     }
 

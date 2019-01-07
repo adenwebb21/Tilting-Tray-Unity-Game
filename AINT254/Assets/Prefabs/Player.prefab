@@ -635,6 +635,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColourLerp: {fileID: 11400000, guid: a67b6604ee4e5ed4aa803f57a9dc94bb, type: 2}
+  red: {r: 0.40392157, g: 0, b: 0, a: 0}
+  blue: {r: 0, g: 0, b: 0.3019608, a: 0}
   isColoured: 0
 --- !u!114 &114984998713403322
 MonoBehaviour:
