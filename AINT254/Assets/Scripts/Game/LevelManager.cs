@@ -7,7 +7,8 @@ public class LevelManager : MonoBehaviour {
 
     private GameObject player;
 
-    public int startingLevel;
+    [SerializeField]
+    private IntVariable startingLevel;
 
     [SerializeField]
     private GameEvent showInfo;
@@ -24,9 +25,22 @@ public class LevelManager : MonoBehaviour {
     private void Start()
     {      
         player = GameObject.FindGameObjectWithTag("Player");
-        currentLevel.Value = startingLevel;
+        currentLevel.Value = startingLevel.Value;
+        PositionLevels();
         player.transform.position = levels[currentLevel.Value].transform.Find("spawn").transform.position;
         //ShowInfo();
+    }
+
+    private void PositionLevels()
+    {
+        foreach(GameObject level in levels)
+        {
+            level.transform.position = new Vector3(20, 0, 0);
+            level.SetActive(false);
+        }
+
+        levels[currentLevel.Value].transform.position = new Vector3(0, 0, 0);
+        levels[currentLevel.Value].SetActive(true);
     }
 
     public void OnNextLevel()

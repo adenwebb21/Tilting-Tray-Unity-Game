@@ -3232,7 +3232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7dc076436ed964f871579cc0f723db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 0
+  startingLevel: {fileID: 11400000, guid: 87525efe9d102a745a41488575215a0a, type: 2}
   showInfo: {fileID: 11400000, guid: f7eb80e945fd4bf4eb555718b6fb4646, type: 2}
   levelAnimators:
   - {fileID: 1150702574}
