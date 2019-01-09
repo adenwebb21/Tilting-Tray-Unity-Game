@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Determines what the correct victory condition is depending on the level
+/// </summary>
 public class VictoryScreen : MonoBehaviour {
 
     [SerializeField]
@@ -38,7 +41,6 @@ public class VictoryScreen : MonoBehaviour {
                     if (playerColourLerp.Value == 0.5f && collision.gameObject.GetComponent<CurrentPlayerColour>().isColoured)
                     {
                         playerVictory.Raise();
-                        //uiScript.TriggerVictoryScreen();
                     }
                     else
                     {

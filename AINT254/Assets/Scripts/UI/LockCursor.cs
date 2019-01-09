@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls the cursor state
+/// </summary>
 public class LockCursor : MonoBehaviour {
 
     private CursorLockMode lockedMode = CursorLockMode.Locked;
     private CursorLockMode unlockedMode = CursorLockMode.None;
+
 	// Use this for initialization
 	void Start () {
 

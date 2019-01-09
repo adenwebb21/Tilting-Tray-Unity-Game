@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using ISS;
 
+/// <summary>
+/// Various utility functions for the timer unit
+/// </summary>
 public class Timer : MonoBehaviour {
 
     [SerializeField]

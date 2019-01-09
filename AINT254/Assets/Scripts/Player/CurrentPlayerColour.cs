@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls the current colour of the player based on paint
+/// </summary>
 public class CurrentPlayerColour : MonoBehaviour {
 
     [SerializeField]
@@ -10,6 +13,7 @@ public class CurrentPlayerColour : MonoBehaviour {
     private Renderer rend;
     private PlayerSoundManager playerSound;
 
+    // Adjustable from the editor
     public Color red = new Color();
     public Color blue = new Color();
 
@@ -21,6 +25,7 @@ public class CurrentPlayerColour : MonoBehaviour {
         rend = gameObject.GetComponent<Renderer>();
         playerSound = gameObject.GetComponent<PlayerSoundManager>();
 
+        // Starts neutral so that any colour addition takes it to that colour
         currentColourLerp.Value = 0.5f;
     }
 
@@ -40,6 +45,8 @@ public class CurrentPlayerColour : MonoBehaviour {
         }
     }
 
+    // Used for adding colours correctly
+    #region Add Colours
     public void AddBlue()
     {
         playerSound.AddPaint();
@@ -69,4 +76,5 @@ public class CurrentPlayerColour : MonoBehaviour {
             currentColourLerp.Value = 0.5f;
         }
     }
+    #endregion
 }

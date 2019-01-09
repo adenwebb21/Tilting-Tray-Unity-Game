@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+/// <summary>
+/// Populates the victory screen that appears at the end of a level
+/// </summary>
 public class PopulateVictoryPanel : MonoBehaviour {
 
     [SerializeField]
@@ -22,6 +25,9 @@ public class PopulateVictoryPanel : MonoBehaviour {
         rank.text = rank.text + "Not yet implemented";
     }
 
+    /// <summary>
+    /// Compares time to high score and displays the correct values
+    /// </summary>
     public void DisplayTime()
     {
         if (timerObject.Value < highScores[currentLevel.Value].Value || highScores[currentLevel.Value].Value == 0)

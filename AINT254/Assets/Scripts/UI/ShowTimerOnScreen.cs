@@ -10,6 +10,7 @@ public class ShowTimerOnScreen : MonoBehaviour {
 
     private void Update()
     {
+        // Rounding the timer value to 1 decimal place
         gameObject.GetComponent<Text>().text = timer.Value.ToString("f1");
     }
 }

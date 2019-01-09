@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the title screen scene - most of these functions are called via events on buttons
+/// </summary>
 public class TitleScreenController : MonoBehaviour {
 
     [SerializeField]

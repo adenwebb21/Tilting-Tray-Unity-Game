@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages all the sounds associated with the player
+/// </summary>
 public class PlayerSoundManager : MonoBehaviour {
 
     private Rigidbody playerBody;
@@ -33,7 +36,6 @@ public class PlayerSoundManager : MonoBehaviour {
             ballRolling.Play();
         }
 
-        //ballRolling.volume = Mathf.InverseLerp(0, 1, GetHighestVelocity());
         ballRolling.volume = Mathf.Clamp(GetHighestVelocity(), 0, 0.2f);
     }
 
@@ -43,12 +45,17 @@ public class PlayerSoundManager : MonoBehaviour {
         {
             Debug.Log(collision.collider.tag);
 
+            // Ball hit volume is linked to the velocity of the ball and to a random pitch shift
             ballHit.volume = Mathf.Clamp(GetHighestVelocity(), 0, 0.6f);
             ballHit.pitch = 0 + Random.Range(0.4f, 2f);
             ballHit.Play();
         }
     }
 
+    /// <summary>
+    /// Gets the highest value comparing the x and z velocity of the ball
+    /// </summary>
+    /// <returns> the highest value </returns>
     private float GetHighestVelocity()
     {
         if(Mathf.Abs(playerBody.velocity.x) > Mathf.Abs(playerBody.velocity.z))
@@ -61,6 +68,9 @@ public class PlayerSoundManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Slightly random pitch o the paint splat as well
+    /// </summary>
     public void AddPaint()
     {
         paintAdd.pitch = 0 + Random.Range(0.5f, 1.5f);

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using ISS;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages all of the UI in the game
+/// </summary>
 public class UIController : MonoBehaviour {
 
     [SerializeField]
@@ -15,9 +18,6 @@ public class UIController : MonoBehaviour {
 
     [SerializeField]
     private IntVariable currentLevel;
-
-    //[SerializeField]
-    //private Timer timer;
 
     [SerializeField]
     private GameObject victoryScreen, levelInfo;
@@ -43,6 +43,7 @@ public class UIController : MonoBehaviour {
 
     private void Update()
     {
+        // Gets player sound manager if the original player is dead
         if(playerSound == null && GameObject.FindGameObjectWithTag("Player"))
         {
             playerSound = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSoundManager>();
@@ -89,7 +90,6 @@ public class UIController : MonoBehaviour {
 
         Time.timeScale = 0f;
         cursorScript.Unlock();
-        //timer.StopTimer();
         victoryScreen.SetActive(true);
         victoryScreen.GetComponent<PopulateVictoryPanel>().CalculateRank();
         victoryScreen.GetComponent<PopulateVictoryPanel>().DisplayTime();
@@ -109,18 +109,6 @@ public class UIController : MonoBehaviour {
         restartLevel.Raise();
     }
 
-    //public void ShowInfo()
-    //{
-    //    if(currentLevel.Value < levelInfos.Length)
-    //    {
-    //        levelInfo.GetComponentInChildren<Text>().text = levelInfos[currentLevel.Value];
-    //        levelInfo.SetActive(true);
-    //        cursorScript.Unlock();
-    //        playerSound.StopAllSounds();
-    //        Time.timeScale = 0.0f;
-    //    }      
-    //}
-
     public void NextLevelButton()
     {
         isVictoryActive = false;
@@ -133,23 +121,35 @@ public class UIController : MonoBehaviour {
         nextLevel.Raise();
     }
 
+    /// <summary>
+    /// Activates the wrong colour prompt at the top of the screen, waits three seconds before returning it
+    /// </summary>
     public void OnWrongColour()
     {
         wrongColourAnimator.SetBool("wrongColour", true);
         StartCoroutine(gameObject.CountDownFrom(3.0f, () => { ResetWrongColour(); }));
     }
 
+    /// <summary>
+    /// Activates the +10 prompt, waits 1 second before removing it
+    /// </summary>
     public void OnAddTime()
     {
         plusTenAnimator.SetBool("+10", true);
         StartCoroutine(gameObject.CountDownFrom(1f, () => { ResetAddTime(); }));
     }
 
+    /// <summary>
+    /// Animates the +10 prompt away
+    /// </summary>
     private void ResetAddTime()
     {
         plusTenAnimator.SetBool("+10", false);
     }
 
+    /// <summary>
+    /// Animates the wrong colour prompt away
+    /// </summary>
     private void ResetWrongColour()
     {
         wrongColourAnimator.SetBool("wrongColour", false);
